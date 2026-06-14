@@ -1,0 +1,207 @@
+  ~/rosatom
+nix-shell ❯ curl -s -X GET "https://infra.mail.ru:8774/v2.1/5aa354d05172439abcc5bfc3f682da49/flavors/detail" \                                                               on ☁️  (ru-msk)
+  -H "X-Auth-Token: $TOKEN" | jq '.flavors[] | {name: .name, id: .id, disk: .disk} | select(.disk > 0)'
+{
+  "name": "Basic-1-2-40",
+  "id": "19b38715-48cd-495b-9391-4c4e9d424518",
+  "disk": 40
+}
+{
+  "name": "Basic-1-2-20",
+  "id": "25ae869c-be29-4840-8e12-99e046d2dbd4",
+  "disk": 20
+}
+{
+  "name": "Advanced-8-16-100",
+  "id": "283fa444-8d59-4e83-b6f4-90613c52a5a4",
+  "disk": 100
+}
+{
+  "name": "Advanced-16-64-50",
+  "id": "59f7faf3-d817-4cb8-ae69-8b4b92565f94",
+  "disk": 50
+}
+{
+  "name": "Advanced-16-32-50",
+  "id": "670f9d36-d01b-4a4a-a8e5-c88cfb9ea0ec",
+  "disk": 50
+}
+{
+  "name": "Advanced-8-32-50",
+  "id": "76fd2a82-4095-49b7-acc9-80ee90284ce9",
+  "disk": 50
+}
+{
+  "name": "Standard-4-8-50",
+  "id": "77109506-bf0c-44a9-9e97-53360e9898bc",
+  "disk": 50
+}
+{
+  "name": "Basic-1-4-50",
+  "id": "7e6f3416-f74a-40b5-86e8-82d14615f329",
+  "disk": 50
+}
+{
+  "name": "Advanced-8-16-160",
+  "id": "7f04b02c-5260-4b5d-bccf-4151c5ade92d",
+  "disk": 160
+}
+{
+  "name": "Standard-4-8-80",
+  "id": "908479b5-1138-46b6-b746-48bf6c24e548",
+  "disk": 80
+}
+{
+  "name": "Standard-2-4-50",
+  "id": "b7d20f15-82f1-4ed4-a12e-e60277fe955f",
+  "disk": 50
+}
+{
+  "name": "Standard-2-8-50",
+  "id": "bf714720-78da-4271-ab7d-0cf5e2613f14",
+  "disk": 50
+}
+{
+  "name": "Standard-2-4-40",
+  "id": "d659fa16-c7fb-42cf-8a5e-9bcbe80a7538",
+  "disk": 40
+}
+{
+  "name": "Basic-1-1-10",
+  "id": "df3c499a-044f-41d2-8612-d303adc613cc",
+  "disk": 10
+}
+{
+  "name": "Standard-4-16-50",
+  "id": "ea26a8fe-5915-4bda-abdc-34b0be148e97",
+  "disk": 50
+}
+
+  ~/rosatom
+nix-shell ❯ curl -s -X GET "https://infra.mail.ru:9696/v2.0/networks" \                                                                                                      on ☁️  (ru-msk)
+  -H "X-Auth-Token: $TOKEN" \
+  -H "Content-Type: application/json" | jq '.networks[] | {id, name}'
+{
+  "id": "ec8c610e-6387-447e-83d2-d2c541e88164",
+  "name": "internet"
+}
+
+  ~/rosatom
+nix-shell ❯ curl -s -X GET "https://infra.mail.ru:9292/v2/images" \                                                                                                          on ☁️  (ru-msk)
+  -H "X-Auth-Token: $TOKEN" \
+  -H "Content-Type: application/json" | jq '.images[] | {id, name}'
+{
+  "id": "91092b96-c349-401f-bf4c-0ddeecb88f4d",
+  "name": "alse-1.8.4-max-vkcloud-mg16.0.0-amd64"
+}
+{
+  "id": "74b5e605-c1c0-44f8-9019-ea4e9d19177b",
+  "name": "opensuse-leap-15.5-202603071211.git3f834af3"
+}
+{
+  "id": "a240235f-fdac-414c-94eb-1022025158c0",
+  "name": "opensuse-leap-15.6-202602160742.git3f834af3"
+}
+{
+  "id": "fcbf111e-03b7-47e5-b348-59fecfc0af2c",
+  "name": "redos-std-73-vgpu-202602051650.gite7a38aaf"
+}
+{
+  "id": "c516abf0-0dad-4be1-b2b5-d7dae7093806",
+  "name": "ubuntu-24-vgpu-202602051634.gite7a38aaf"
+}
+{
+  "id": "b812255f-7b5f-4fd6-bad4-8b24265dc076",
+  "name": "ubuntu-24-202602051634.gite7a38aaf"
+}
+{
+  "id": "dc0f6670-ee20-425a-bda6-666d498a6aa9",
+  "name": "redos-std-80-202602051633.gite7a38aaf"
+}
+{
+  "id": "26534385-131c-4217-a2d3-a034a33993b0",
+  "name": "ubuntu-18-202602051631.gite7a38aaf"
+}
+{
+  "id": "371e0707-6700-48d1-97d8-e1a01a443fbf",
+  "name": "ubuntu-20-202602051631.gite7a38aaf"
+}
+{
+  "id": "a4e699d3-a66d-45e5-bb5d-70ea7c8de62d",
+  "name": "ubuntu-22-202602051629.gite7a38aaf"
+}
+{
+  "id": "761117e5-b607-4041-9c47-f5cce1b19c34",
+  "name": "ubuntu-16-202602051624.gite7a38aaf"
+}
+{
+  "id": "1c064e46-8af6-40d5-b7d0-14e17573340d",
+  "name": "redos-std-73-202602051633.gite7a38aaf"
+}
+{
+  "id": "501f01b0-552b-4e76-984f-f17af9ba679b",
+  "name": "redos-crt-73-202602051634.gite7a38aaf"
+}
+{
+  "id": "80354fe5-91e2-4aac-998c-ccd72af1d27c",
+  "name": "debian-13-202602051630.gite7a38aaf"
+}
+{
+  "id": "41595402-4d3a-4055-b570-bbfb5dfb4fb1",
+  "name": "debian-12-202602051626.gite7a38aaf"
+}
+{
+  "id": "28610469-9621-4747-a226-564f8c74a2df",
+  "name": "debian-12-vgpu-202602051632.gite7a38aaf"
+}
+{
+  "id": "98d4aec9-8d26-43a3-99da-0e90e1db30c0",
+  "name": "debian-11-202602051625.gite7a38aaf"
+}
+{
+  "id": "9080fc2f-bb27-4274-b92b-d75a3ad4e249",
+  "name": "centos-8-stream-202602051626.gite7a38aaf"
+}
+{
+  "id": "cb04a0bc-b0e2-4670-b46f-ecc56668214b",
+  "name": "debian-10-202602051625.gite7a38aaf"
+}
+{
+  "id": "7ae8f6e7-ada2-4858-8420-4dfc671b3062",
+  "name": "centos-8-stream-vgpu-202602051634.gite7a38aaf"
+}
+{
+  "id": "bc3782cc-c2b8-4cc4-892a-5383558e433b",
+  "name": "centos-7.9-202602051631.gite7a38aaf"
+}
+{
+  "id": "1c7529ce-0897-4faf-b796-ada02dde0b43",
+  "name": "astra-vor-1.7-vgpu-202602051632.gite7a38aaf"
+}
+{
+  "id": "e403f5c9-6c44-44a8-875c-53acbbc3031d",
+  "name": "astra-or-1.7-vgpu-202602051639.gite7a38aaf"
+}
+{
+  "id": "096a045c-b875-4a4e-902f-eb93bc23719a",
+  "name": "almalinux-9.7-202602051629.gite7a38aaf"
+}
+{
+  "id": "f0045749-fb70-4ce8-9993-8ee3287ef56f",
+  "name": "almalinux-10.1-202602051628.gite7a38aaf"
+}
+
+  ~/rosatom
+nix-shell ❯ curl -s -X POST "https://infra.mail.ru:8774/v2.1/5aa354d05172439abcc5bfc3f682da49/servers" \                                                                     on ☁️  (ru-msk)
+  -H "X-Auth-Token: $TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "server": {
+      "name": "api-created-vm",
+      "imageRef": "b812255f-7b5f-4fd6-bad4-8b24265dc076",
+      "flavorRef": "25ae869c-be29-4840-8e12-99e046d2dbd4",
+      "networks": [{"uuid": "ec8c610e-6387-447e-83d2-d2c541e88164"}],
+      "key_name": "my-first-vm-ie9Ev9Cc"
+    }
+  }'
+{"server": {"security_groups": [{"name": "default"}], "OS-DCF:diskConfig": "MANUAL", "id": "8c3f3134-560c-4558-9060-c3c6731792a8", "links": [{"href": "https://infra.mail.ru:8774/v2.1/5aa354d05172439abcc5bfc3f682da49/servers/8c3f3134-560c-4558-9060-c3c6731792a8", "rel": "self"}, {"href": "https://infra.mail.ru:8774/5aa354d05172439abcc5bfc3f682da49/servers/8c3f3134-560c-4558-9060-c3c6731792a8", "rel": "bookmark"}], "adminPass": "8WwHM2JjPj62"}}%

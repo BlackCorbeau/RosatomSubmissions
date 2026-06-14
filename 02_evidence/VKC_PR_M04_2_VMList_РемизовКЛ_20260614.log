@@ -1,0 +1,26 @@
+  ~/rosatom
+nix-shell ❌5 ❯ curl -s -X GET "https://infra.mail.ru:8774/v2.1/5aa354d05172439abcc5bfc3f682da49/servers" \                                                                  on ☁️  (ru-msk)
+  -H "X-Auth-Token: $TOKEN" \
+  -H "Content-Type: application/json" | jq '.servers'
+[]
+  ~/rosatom
+nix-shell ❯ #После создания VM через API
+curl -s -X GET "https://infra.mail.ru:8774/v2.1/5aa354d05172439abcc5bfc3f682da49/servers" \                                                                      on ☁️  (ru-msk)
+  -H "X-Auth-Token: $TOKEN" \
+  -H "Content-Type: application/json" | jq '.servers'
+[
+  {
+    "id": "8c3f3134-560c-4558-9060-c3c6731792a8",
+    "links": [
+      {
+        "href": "https://infra.mail.ru:8774/v2.1/5aa354d05172439abcc5bfc3f682da49/servers/8c3f3134-560c-4558-9060-c3c6731792a8",
+        "rel": "self"
+      },
+      {
+        "href": "https://infra.mail.ru:8774/5aa354d05172439abcc5bfc3f682da49/servers/8c3f3134-560c-4558-9060-c3c6731792a8",
+        "rel": "bookmark"
+      }
+    ],
+    "name": "api-created-vm"
+  }
+]

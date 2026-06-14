@@ -1,0 +1,54 @@
+  ~/rosatom/terraform-practies
+nix-shell ❯ # Получение списка инстансов БД                                                                                                                   via 💠 default on ☁️  (ru-msk)
+openstack database instance list
+
+# Просмотр информации о конкретном инстансе
+openstack database instance show my-postgres
+
+# Получение параметров подключения
+openstack database instance show my-postgres -c hosts -c datastore
+openstack: 'database instance list' is not an openstack command. See 'openstack --help'.
+Did you mean one of these?
+  address group create
+  address group delete
+  address group list
+  address group set
+  address group show
+  address group unset
+  address scope create
+  address scope delete
+  address scope list
+  address scope set
+  address scope show
+  catalog list
+  catalog show
+openstack: 'database instance show my-postgres' is not an openstack command. See 'openstack --help'.
+Did you mean one of these?
+  address group create
+  address group delete
+  address group list
+  address group set
+  address group show
+  address group unset
+  address scope create
+  address scope delete
+  address scope list
+  address scope set
+  address scope show
+  catalog list
+  catalog show
+openstack: 'database instance show my-postgres -c hosts -c datastore' is not an openstack command. See 'openstack --help'.
+Did you mean one of these?
+  address group create
+  address group delete
+  address group list
+  address group set
+  address group show
+  address group unset
+  address scope create
+  address scope delete
+  address scope list
+  address scope set
+  address scope show
+  catalog list
+  catalog show

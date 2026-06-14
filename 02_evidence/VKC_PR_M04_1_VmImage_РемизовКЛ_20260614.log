@@ -1,0 +1,47 @@
+  ~/rosatom
+nix-shell ❌1 ❯ # Остановите ВМ для консистентност                                                                                                                           on ☁️  (ru-msk)
+openstack server stop cli-advanced-vm
+
+# Создание образа из ВМ
+openstack server image create \
+  --name my-custom-image \
+  --wait \
+  cli-advanced-vm
+
+# Проверка создания образа
+openstack image list | grep my-custom-image
+
+# Запуск ВМ обратно (если нужно)
+openstack server start cli-advanced-vm
++------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Field            | Value                                                                                                                                                                  |
++------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| checksum         | d8f7bbc3d1cc458bc8cb4a89d2d04fe4                                                                                                                                       |
+| container_format | bare                                                                                                                                                                   |
+| created_at       | 2026-06-14T11:11:27Z                                                                                                                                                   |
+| disk_format      | raw                                                                                                                                                                    |
+| file             | /v2/images/84104fb4-7ee8-4472-aa1d-ecfe0b7b16d6/file                                                                                                                   |
+| id               | 84104fb4-7ee8-4472-aa1d-ecfe0b7b16d6                                                                                                                                   |
+| min_disk         | 10                                                                                                                                                                     |
+| min_ram          | 0                                                                                                                                                                      |
+| name             | my-custom-image                                                                                                                                                        |
+| owner            | 5aa354d05172439abcc5bfc3f682da49                                                                                                                                       |
+| properties       | base_image_ref='a4e699d3-a66d-45e5-bb5d-70ea7c8de62d', direct_url='rbd://b0e441fc-c317-4acf-a606-cf74683978d2/images/84104fb4-7ee8-4472-aa1d-ecfe0b7b16d6/snap',       |
+|                  | has_local_drives='True', hw_cdrom_bus='sata', hw_disk_bus='virtio', hw_input_bus='usb', hw_machine_type='q35', hw_pointer_model='usbtablet',                           |
+|                  | hw_qemu_guest_agent='yes', hw_vif_model='virtio', image_location='snapshot', image_state='available', image_type='snapshot',                                           |
+|                  | instance_uuid='f3652d89-9110-4869-8f3f-82eb38f7c664', is_ephemeral_root='True', locations='[{'url':                                                                    |
+|                  | 'rbd://b0e441fc-c317-4acf-a606-cf74683978d2/images/84104fb4-7ee8-4472-aa1d-ecfe0b7b16d6/snap', 'metadata': {'store': 'rbd'}}]', managed_type_net_devices='unmanaged',  |
+|                  | mcs_name='Ubuntu 22.04', mcs_os_distro='ubuntu', mcs_os_type='linux', mcs_os_version='22.04', os_admin_user='ubuntu', os_distro='ubuntu22.04', os_hidden='False',      |
+|                  | os_require_quiesce='True', os_type='linux', os_version='22.04', owner_project_name='mcs3340419193', owner_specified.openstack.md5='b56805f4106d5f6b701b589ad3d4e058',  |
+|                  | owner_specified.openstack.object='images/ubuntu-22-202602051629.gite7a38aaf', owner_specified.openstack.sha256='', owner_user_name='remizov.kirill2005@yandex.ru',     |
+|                  | stopped_at='2026-06-14T11:10:36.722329', stores='rbd', user_id='a9d31b4ea75643f7b64bbeeeb297ae1f'                                                                      |
+| protected        | False                                                                                                                                                                  |
+| schema           | /v2/schemas/image                                                                                                                                                      |
+| size             | 10737418240                                                                                                                                                            |
+| status           | active                                                                                                                                                                 |
+| tags             |                                                                                                                                                                        |
+| updated_at       | 2026-06-14T11:13:27Z                                                                                                                                                   |
+| virtual_size     | 10737418240                                                                                                                                                            |
+| visibility       | private                                                                                                                                                                |
++------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| 84104fb4-7ee8-4472-aa1d-ecfe0b7b16d6 | my-custom-image                                           | active |

@@ -1,0 +1,22 @@
+  ~/rosatom
+nix-shell ❯ aws s3 mb s3://my-cli-bucket --endpoint-url https://s3.ru-msk.vkcs.cloud                                                                                         on ☁️  (ru-msk)
+make_bucket failed: s3://my-cli-bucket Could not connect to the endpoint URL: "https://s3.ru-msk.vkcs.cloud/my-cli-bucket"
+
+  ~/rosatom
+nix-shell ❌1 ❯ aws s3 mb s3://my-cli-bucket --endpoint-url https://hb.vkcloud-storage.ru                                                                                    on ☁️  (ru-msk)
+make_bucket: my-cli-bucket
+
+  ~/rosatom
+nix-shell ❯ aws s3 cp index.html s3://my-cli-bucket/ --endpoint-url https://hb.vkcloud-storage.ru                                                                            on ☁️  (ru-msk)
+upload: ./index.html to s3://my-cli-bucket/index.html
+
+  ~/rosatom
+nix-shell ❯ aws s3api put-object-acl \                                                                                                                                       on ☁️  (ru-msk)
+  --bucket my-cli-bucket \
+  --key index.html \
+  --acl public-read \
+  --endpoint-url https://hb.vkcloud-storage.ru
+
+  ~/rosatom
+nix-shell ❯ curl http://my-cli-bucket.hb.vkcloud-storage.ru/index.html                                                                                                       on ☁️  (ru-msk)
+<h1>CLI Upload</h1>

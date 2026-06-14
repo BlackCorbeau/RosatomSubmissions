@@ -1,0 +1,84 @@
+  ~/rosatom/terraform-practies
+nix-shell ❯ terraform apply -auto-approve                                                                                                                     via 💠 default on ☁️  (ru-msk)
+There are some problems with the CLI configuration:
+╷
+│ Warning: Unable to open CLI configuration file
+│
+│ The CLI configuration file at
+│ "/home/kirill/rosatom/terraform-demo/terraform.rc" does not exist.
+╵
+
+aws_s3_bucket.static_site: Refreshing state... [id=terraform-static-site]
+aws_s3_object.index: Refreshing state... [id=index.html]
+aws_s3_bucket_website_configuration.static_site: Refreshing state... [id=terraform-static-site]
+aws_s3_object.error: Refreshing state... [id=error.html]
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+  ~ update in-place
+
+Terraform will perform the following actions:
+
+  # aws_s3_bucket.static_site will be updated in-place
+  ~ resource "aws_s3_bucket" "static_site" {
+      + acl                         = "public-read"
+        id                          = "terraform-static-site"
+        tags                        = {}
+        # (14 unchanged attributes hidden)
+
+        # (3 unchanged blocks hidden)
+    }
+
+  # aws_s3_object.error will be updated in-place
+  ~ resource "aws_s3_object" "error" {
+      + acl                           = "public-read"
+      - content_encoding              = "aws-chunked" -> null
+        id                            = "error.html"
+        tags                          = {}
+      + version_id                    = (known after apply)
+        # (24 unchanged attributes hidden)
+    }
+
+  # aws_s3_object.index will be updated in-place
+  ~ resource "aws_s3_object" "index" {
+      + acl                           = "public-read"
+      - content_encoding              = "aws-chunked" -> null
+        id                            = "index.html"
+        tags                          = {}
+      + version_id                    = (known after apply)
+        # (24 unchanged attributes hidden)
+    }
+
+Plan: 0 to add, 3 to change, 0 to destroy.
+
+Changes to Outputs:
+  - website_url = "terraform-static-site.s3-website-us-east-1.amazonaws.com" -> null
+aws_s3_bucket.static_site: Modifying... [id=terraform-static-site]
+aws_s3_bucket.static_site: Modifications complete after 0s [id=terraform-static-site]
+aws_s3_object.error: Modifying... [id=error.html]
+aws_s3_object.index: Modifying... [id=index.html]
+aws_s3_object.index: Modifications complete after 1s [id=index.html]
+aws_s3_object.error: Modifications complete after 1s [id=error.html]
+╷
+│ Warning: Argument is deprecated
+│
+│   with aws_s3_bucket.static_site,
+│   on main.tf line 45, in resource "aws_s3_bucket" "static_site":
+│   45:   acl    = "public-read"   # вместо bucket policy
+│
+│ acl is deprecated. Use the aws_s3_bucket_acl resource instead.
+│
+│ (and 2 more similar warnings elsewhere)
+╵
+
+Apply complete! Resources: 0 added, 3 changed, 0 destroyed.
+
+  ~/rosatom/terraform-practies
+nix-shell ❯ curl http://terraform-static-site.hb.vkcloud-storage.ru/index.html                                                                                via 💠 default on ☁️  (ru-msk)
+<!DOCTYPE html>
+<html>
+<head><title>Terraform Site</title></head>
+<body>
+  <h1>Deployed with Terraform!</h1>
+  <p>This site was created automatically.</p>
+</body>
+</html>

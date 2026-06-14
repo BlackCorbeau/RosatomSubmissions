@@ -1,0 +1,70 @@
+  ~/rosatom
+nix-shell ❯ source ./mcs3340419193-openrc.sh                                                                                                                                 on ☁️  (ru-msk)
+Please enter your OpenStack Password for project 5aa354d05172439abcc5bfc3f682da49 as user remizov.kirill2005@yandex.ru:
+
+  ~/rosatom
+nix-shell ❯ openstack token issue                                                                                                                                            on ☁️  (ru-msk)
++------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Field      | Value                                                                                                                                                                        |
++------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| expires    | 2026-06-14T11:49:13+0000                                                                                                                                                     |
+| id         | gAAAAABqLocppTSFM820tp_aqpoM5ZhfILgDRfAK2opQAnu5bBTqDkaHpKOvlSJdczgcJ8hcCpcr8dmwD8yGr5PYVmANgTPSoPndbWXhqPJOgj7oiYHrLQEQO6qmusMSB1DGBJmcc0Ooll05KrLz_hb64W6unQuQyKFcT6od6wXZ |
+|            | s9l_bH8RWWk                                                                                                                                                                  |
+| project_id | 5aa354d05172439abcc5bfc3f682da49                                                                                                                                             |
+| user_id    | a9d31b4ea75643f7b64bbeeeb297ae1f                                                                                                                                             |
++------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+  ~/rosatom
+nix-shell ❯ openstack server create --flavor df3c499a-044f-41d2-8612-d303adc613cc \                                                                                          on ☁️  (ru-msk)
+                       --image "ubuntu-22-202602051629.gite7a38aaf" \
+                       --key-name my-first-vm-ie9Ev9Cc \
+                       --network "ec8c610e-6387-447e-83d2-d2c541e88164" \
+                       --security-group ssh \
+                       cli-advanced-vm
++-------------------------------------+---------------------------------------------------------------------------+
+| Field                               | Value                                                                     |
++-------------------------------------+---------------------------------------------------------------------------+
+| OS-DCF:diskConfig                   | MANUAL                                                                    |
+| OS-EXT-AZ:availability_zone         | None                                                                      |
+| OS-EXT-SRV-ATTR:host                | None                                                                      |
+| OS-EXT-SRV-ATTR:hostname            | None                                                                      |
+| OS-EXT-SRV-ATTR:hypervisor_hostname | None                                                                      |
+| OS-EXT-SRV-ATTR:instance_name       | None                                                                      |
+| OS-EXT-SRV-ATTR:kernel_id           | None                                                                      |
+| OS-EXT-SRV-ATTR:launch_index        | None                                                                      |
+| OS-EXT-SRV-ATTR:ramdisk_id          | None                                                                      |
+| OS-EXT-SRV-ATTR:reservation_id      | None                                                                      |
+| OS-EXT-SRV-ATTR:root_device_name    | None                                                                      |
+| OS-EXT-SRV-ATTR:user_data           | None                                                                      |
+| OS-EXT-STS:power_state              | N/A                                                                       |
+| OS-EXT-STS:task_state               | scheduling                                                                |
+| OS-EXT-STS:vm_state                 | building                                                                  |
+| OS-SRV-USG:launched_at              | None                                                                      |
+| OS-SRV-USG:terminated_at            | None                                                                      |
+| accessIPv4                          | None                                                                      |
+| accessIPv6                          | None                                                                      |
+| addresses                           | N/A                                                                       |
+| adminPass                           | DXZwVQrnJNa5                                                              |
+| config_drive                        | None                                                                      |
+| created                             | 2026-06-14T10:56:53Z                                                      |
+| description                         | None                                                                      |
+| flavor                              | Basic-1-1-10 (df3c499a-044f-41d2-8612-d303adc613cc)                       |
+| hostId                              | None                                                                      |
+| host_status                         | None                                                                      |
+| id                                  | f3652d89-9110-4869-8f3f-82eb38f7c664                                      |
+| image                               | ubuntu-22-202602051629.gite7a38aaf (a4e699d3-a66d-45e5-bb5d-70ea7c8de62d) |
+| key_name                            | my-first-vm-ie9Ev9Cc                                                      |
+| locked                              | None                                                                      |
+| locked_reason                       | None                                                                      |
+| name                                | cli-advanced-vm                                                           |
+| progress                            | None                                                                      |
+| project_id                          | 5aa354d05172439abcc5bfc3f682da49                                          |
+| properties                          | None                                                                      |
+| security_groups                     | name='4ee4e402-fb2a-4697-b8ce-9435e8db6fa3'                               |
+| server_groups                       | None                                                                      |
+| status                              | BUILD                                                                     |
+| tags                                |                                                                           |
+| trusted_image_certificates          | None                                                                      |
+| updated                             | 2026-06-14T10:56:54Z                                                      |
+| user_id                             | a9d31b4ea75643f7b64bbeeeb297ae1f                                          |
+| volumes_attached                    |                                                                           |
++-------------------------------------+---------------------------------------------------------------------------+

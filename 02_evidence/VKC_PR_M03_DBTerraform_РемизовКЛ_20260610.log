@@ -1,0 +1,282 @@
+  ~/rosatom/terraform-practies
+nix-shell ❯ terraform apply -auto-approve                                                                                                                     via 💠 default on ☁️  (ru-msk)
+There are some problems with the CLI configuration:
+╷
+│ Warning: Unable to open CLI configuration file
+│
+│ The CLI configuration file at
+│ "/home/kirill/rosatom/terraform-demo/terraform.rc" does not exist.
+╵
+
+data.vkcs_networking_router.main: Reading...
+data.vkcs_networking_router.main: Read complete after 1s [id=913bdd47-9155-45b2-b404-5c10d0086132]
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+  + create
+ <= read (data resources)
+
+Terraform will perform the following actions:
+
+  # data.vkcs_db_instance.postgres_info will be read during apply
+  # (config refers to values not yet known)
+ <= data "vkcs_db_instance" "postgres_info" {
+      + id = (known after apply)
+    }
+
+  # local_file.db_password will be created
+  + resource "local_file" "db_password" {
+      + content              = (sensitive value)
+      + content_base64sha256 = (known after apply)
+      + content_base64sha512 = (known after apply)
+      + content_md5          = (known after apply)
+      + content_sha1         = (known after apply)
+      + content_sha256       = (known after apply)
+      + content_sha512       = (known after apply)
+      + directory_permission = "0777"
+      + file_permission      = "0777"
+      + filename             = "./db_password.txt"
+      + id                   = (known after apply)
+    }
+
+  # random_password.db_password will be created
+  + resource "random_password" "db_password" {
+      + bcrypt_hash = (sensitive value)
+      + id          = (known after apply)
+      + length      = 16
+      + lower       = true
+      + min_lower   = 1
+      + min_numeric = 1
+      + min_special = 1
+      + min_upper   = 1
+      + number      = true
+      + numeric     = true
+      + result      = (sensitive value)
+      + special     = true
+      + upper       = true
+    }
+
+  # vkcs_db_database.app_db will be created
+  + resource "vkcs_db_database" "app_db" {
+      + dbms_id   = (known after apply)
+      + dbms_type = (known after apply)
+      + id        = (known after apply)
+      + name      = "app_db"
+    }
+
+  # vkcs_db_instance.postgres will be created
+  + resource "vkcs_db_instance" "postgres" {
+      + availability_zone   = "MS1"
+      + flavor_id           = "2df6e3ec-5939-4d28-a818-89558ff1b7ab"
+      + floating_ip_enabled = true
+      + id                  = (known after apply)
+      + ip                  = (known after apply)
+      + name                = "terraform-postgres"
+      + region              = (known after apply)
+      + root_password       = (sensitive value)
+      + size                = 10
+      + volume_type         = "ceph-ssd"
+
+      + datastore {
+          + type    = "postgresql"
+          + version = "15"
+        }
+
+      + disk_autoexpand (known after apply)
+
+      + network {
+          + uuid = (known after apply)
+        }
+    }
+
+  # vkcs_db_user.app_user will be created
+  + resource "vkcs_db_user" "app_user" {
+      + databases = [
+          + "app_db",
+        ]
+      + dbms_id   = (known after apply)
+      + dbms_type = (known after apply)
+      + id        = (known after apply)
+      + name      = "app_user"
+      + password  = (sensitive value)
+    }
+
+  # vkcs_networking_network.main will be created
+  + resource "vkcs_networking_network" "main" {
+      + admin_state_up        = true
+      + all_tags              = (known after apply)
+      + id                    = (known after apply)
+      + name                  = "postgres-network"
+      + port_security_enabled = true
+      + private_dns_domain    = (known after apply)
+      + region                = (known after apply)
+      + sdn                   = (known after apply)
+    }
+
+  # vkcs_networking_router_interface.main will be created
+  + resource "vkcs_networking_router_interface" "main" {
+      + id        = (known after apply)
+      + port_id   = (known after apply)
+      + region    = (known after apply)
+      + router_id = "913bdd47-9155-45b2-b404-5c10d0086132"
+      + sdn       = (known after apply)
+      + subnet_id = (known after apply)
+    }
+
+  # vkcs_networking_subnet.main will be created
+  + resource "vkcs_networking_subnet" "main" {
+      + all_tags           = (known after apply)
+      + cidr               = "192.168.199.0/24"
+      + enable_dhcp        = true
+      + enable_private_dns = (known after apply)
+      + gateway_ip         = (known after apply)
+      + id                 = (known after apply)
+      + name               = "postgres-subnet"
+      + network_id         = (known after apply)
+      + no_gateway         = false
+      + region             = (known after apply)
+      + sdn                = (known after apply)
+
+      + allocation_pool (known after apply)
+    }
+
+Plan: 8 to add, 0 to change, 0 to destroy.
+
+Changes to Outputs:
+  + db_instance_full = (sensitive value)
+  + db_name          = "app_db"
+  + db_port          = 5432
+  + db_user          = "app_user"
+random_password.db_password: Creating...
+random_password.db_password: Creation complete after 0s [id=none]
+local_file.db_password: Creating...
+local_file.db_password: Creation complete after 0s [id=c065a6aa96dc86bce3c11dbcfcea69ec7a6b3cb1]
+vkcs_networking_network.main: Creating...
+vkcs_networking_network.main: Creation complete after 6s [id=ab0c70b6-f29d-4499-85b6-e844cd3888f3]
+vkcs_networking_subnet.main: Creating...
+vkcs_db_instance.postgres: Creating...
+vkcs_networking_subnet.main: Creation complete after 6s [id=6166aaf3-cedb-43b2-94e0-ef2e7c749b1f]
+vkcs_networking_router_interface.main: Creating...
+vkcs_networking_router_interface.main: Creation complete after 6s [id=1a23a315-b826-49dd-995a-ea5797af0f87]
+╷
+│ Error: error creating vkcs_db_instance: Bad request with: [POST https://msk.cloud.vk.com/infra/database/v1.0/5aa354d05172439abcc5bfc3f682da49/instances], error message: {"badRequest": {"code": 400, "message": "The network must be routable"}}
+│ Request ID: req-14a8783a-6776-4e99-ab9d-29ec42b9fdbc
+│
+│   with vkcs_db_instance.postgres,
+│   on main.tf line 47, in resource "vkcs_db_instance" "postgres":
+│   47: resource "vkcs_db_instance" "postgres" {
+│
+╵
+
+  ~/rosatom/terraform-practies
+nix-shell ❌1 ❯ terraform apply -auto-approve                                                                                                                 via 💠 default on ☁️  (ru-msk)
+There are some problems with the CLI configuration:
+╷
+│ Warning: Unable to open CLI configuration file
+│
+│ The CLI configuration file at
+│ "/home/kirill/rosatom/terraform-demo/terraform.rc" does not exist.
+╵
+
+random_password.db_password: Refreshing state... [id=none]
+local_file.db_password: Refreshing state... [id=c065a6aa96dc86bce3c11dbcfcea69ec7a6b3cb1]
+data.vkcs_networking_router.main: Reading...
+vkcs_networking_network.main: Refreshing state... [id=ab0c70b6-f29d-4499-85b6-e844cd3888f3]
+data.vkcs_networking_router.main: Read complete after 0s [id=913bdd47-9155-45b2-b404-5c10d0086132]
+vkcs_networking_subnet.main: Refreshing state... [id=6166aaf3-cedb-43b2-94e0-ef2e7c749b1f]
+vkcs_networking_router_interface.main: Refreshing state... [id=1a23a315-b826-49dd-995a-ea5797af0f87]
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+  + create
+ <= read (data resources)
+
+Terraform will perform the following actions:
+
+  # data.vkcs_db_instance.postgres_info will be read during apply
+  # (config refers to values not yet known)
+ <= data "vkcs_db_instance" "postgres_info" {
+      + id = (known after apply)
+    }
+
+  # vkcs_db_database.app_db will be created
+  + resource "vkcs_db_database" "app_db" {
+      + dbms_id   = (known after apply)
+      + dbms_type = (known after apply)
+      + id        = (known after apply)
+      + name      = "app_db"
+    }
+
+  # vkcs_db_instance.postgres will be created
+  + resource "vkcs_db_instance" "postgres" {
+      + availability_zone   = "MS1"
+      + flavor_id           = "2df6e3ec-5939-4d28-a818-89558ff1b7ab"
+      + floating_ip_enabled = true
+      + id                  = (known after apply)
+      + ip                  = (known after apply)
+      + name                = "terraform-postgres"
+      + region              = (known after apply)
+      + root_password       = (sensitive value)
+      + size                = 10
+      + volume_type         = "ceph-ssd"
+
+      + datastore {
+          + type    = "postgresql"
+          + version = "15"
+        }
+
+      + disk_autoexpand (known after apply)
+
+      + network {
+          + uuid = "ab0c70b6-f29d-4499-85b6-e844cd3888f3"
+        }
+    }
+
+  # vkcs_db_user.app_user will be created
+  + resource "vkcs_db_user" "app_user" {
+      + databases = [
+          + "app_db",
+        ]
+      + dbms_id   = (known after apply)
+      + dbms_type = (known after apply)
+      + id        = (known after apply)
+      + name      = "app_user"
+      + password  = (sensitive value)
+    }
+
+Plan: 3 to add, 0 to change, 0 to destroy.
+
+Changes to Outputs:
+  + db_instance_full = (sensitive value)
+vkcs_db_instance.postgres: Creating...
+vkcs_db_instance.postgres: Still creating... [00m10s elapsed]
+vkcs_db_instance.postgres: Still creating... [00m20s elapsed]
+vkcs_db_instance.postgres: Still creating... [00m30s elapsed]
+vkcs_db_instance.postgres: Still creating... [00m40s elapsed]
+vkcs_db_instance.postgres: Still creating... [00m50s elapsed]
+vkcs_db_instance.postgres: Still creating... [01m00s elapsed]
+vkcs_db_instance.postgres: Still creating... [01m10s elapsed]
+vkcs_db_instance.postgres: Still creating... [01m20s elapsed]
+vkcs_db_instance.postgres: Still creating... [01m30s elapsed]
+vkcs_db_instance.postgres: Still creating... [01m40s elapsed]
+vkcs_db_instance.postgres: Still creating... [01m50s elapsed]
+vkcs_db_instance.postgres: Still creating... [02m00s elapsed]
+vkcs_db_instance.postgres: Still creating... [02m10s elapsed]
+vkcs_db_instance.postgres: Still creating... [02m20s elapsed]
+vkcs_db_instance.postgres: Still creating... [02m30s elapsed]
+vkcs_db_instance.postgres: Creation complete after 2m39s [id=67f5bbfa-390c-4ba5-9307-76fd35db6f61]
+data.vkcs_db_instance.postgres_info: Reading...
+vkcs_db_database.app_db: Creating...
+data.vkcs_db_instance.postgres_info: Read complete after 1s [id=67f5bbfa-390c-4ba5-9307-76fd35db6f61]
+vkcs_db_database.app_db: Still creating... [00m10s elapsed]
+vkcs_db_database.app_db: Creation complete after 13s [id=67f5bbfa-390c-4ba5-9307-76fd35db6f61/app_db]
+vkcs_db_user.app_user: Creating...
+vkcs_db_user.app_user: Still creating... [00m10s elapsed]
+vkcs_db_user.app_user: Creation complete after 12s [id=67f5bbfa-390c-4ba5-9307-76fd35db6f61/app_user]
+
+Apply complete! Resources: 3 added, 0 changed, 0 destroyed.
+
+Outputs:
+
+db_instance_full = <sensitive>
+db_name = "app_db"
+db_port = 5432
+db_user = "app_user"
