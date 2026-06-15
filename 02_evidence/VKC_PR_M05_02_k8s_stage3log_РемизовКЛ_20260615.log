@@ -1,0 +1,36 @@
+  ~/rosatom/k8s
+nix-shell ❯ kubectl apply -f deployment.yaml                                                                                                                                 on ☁️  (ru-msk)
+
+# Проверка
+kubectl get pods
+kubectl get services
+
+# Получение внешнего IP (может занять несколько минут)
+kubectl get service nginx-service -w
+deployment.apps/nginx-deployment created
+service/nginx-service created
+NAME                                READY   STATUS              RESTARTS   AGE
+nginx-deployment-546c8cb74c-65n7l   0/1     Pending             0          0s
+nginx-deployment-546c8cb74c-mvwvm   0/1     ContainerCreating   0          0s
+nginx-deployment-546c8cb74c-qmgv4   0/1     Pending             0          0s
+NAME            TYPE           CLUSTER-IP      EXTERNAL-IP   PORT(S)        AGE
+kubernetes      ClusterIP      10.254.0.1      <none>        443/TCP        35m
+nginx-service   LoadBalancer   10.254.219.88   <pending>     80:31119/TCP   0s
+NAME            TYPE           CLUSTER-IP      EXTERNAL-IP   PORT(S)        AGE
+nginx-service   LoadBalancer   10.254.219.88   <pending>     80:31119/TCP   0s
+nginx-service   LoadBalancer   10.254.219.88   <pending>     80:31119/TCP   3m9s
+^C%
+  ~/rosatom/k8s
+nix-shell ❌1 ❯ kubectl get nodes                                                                                                                                            on ☁️  (ru-msk)
+kubectl get pods --all-namespaces
+NAME                     STATUS   ROLES    AGE   VERSION
+my-k8s-default-group-0   Ready    <none>   43m   v1.34.2
+my-k8s-default-group-1   Ready    <none>   43m   v1.34.2
+NAMESPACE     NAME                                READY   STATUS    RESTARTS   AGE
+default       nginx-deployment-546c8cb74c-65n7l   1/1     Running   0          8m38s
+default       nginx-deployment-546c8cb74c-mvwvm   1/1     Running   0          8m38s
+default       nginx-deployment-546c8cb74c-qmgv4   1/1     Running   0          8m38s
+kube-system   calico-node-c97zb                   1/1     Running   0          43m
+kube-system   calico-node-nwbw7                   1/1     Running   0          43m
+kube-system   csi-cinder-nodeplugin-lwsfs         3/3     Running   0          43m
+kube-system   csi-cinder-nodeplugin-zhdrw         3/3     Running   0          43m

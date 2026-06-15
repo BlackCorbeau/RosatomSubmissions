@@ -1,0 +1,11 @@
+  ~/rosatom
+nix-shell ❯ kubectl get nodes                                                                                                                                                on ☁️  (ru-msk)
+kubectl get pods --all-namespaces
+NAME                     STATUS   ROLES    AGE   VERSION
+my-k8s-default-group-0   Ready    <none>   31m   v1.34.2
+my-k8s-default-group-1   Ready    <none>   31m   v1.34.2
+NAMESPACE     NAME                          READY   STATUS    RESTARTS   AGE
+kube-system   calico-node-c97zb             1/1     Running   0          31m
+kube-system   calico-node-nwbw7             1/1     Running   0          31m
+kube-system   csi-cinder-nodeplugin-lwsfs   3/3     Running   0          31m
+kube-system   csi-cinder-nodeplugin-zhdrw   3/3     Running   0          31m
