@@ -69,4 +69,8 @@ VKC_PR_M04_2_VMList_РемизовКЛ_20260614.log,EVIDENCE,M04,02,Список
 VKC_MINI_M04_snapshot_rotation_РемизовКЛ_20260614.md,MINI,M04,main,Автоматическое создание и ротация снапшотов ВМ,01_reports/VKC_MINI_M04_snapshot_rotation_РемизовКЛ_20260614.md,,final,
 VKC_MINI_M04_snapshot_rotation_РемизовКЛ_20260614.log,EVIDENCE,M04,main,Лог выполнения скрипта снапшотов,02_evidence/VKC_MINI_M04_snapshot_rotation_РемизовКЛ_20260614.log,VKC_MINI_M04_snapshot_rotation_РемизовКЛ_20260614.md,final,
 VKC_MINI_M04_snapshot_rotation_РемизовКЛ_20260614.sh,CODE,M04,main,Bash-скрипт для снапшотов и ротации,03_code/VKC_MINI_M04_snapshot_rotation_РемизовКЛ_20260614.sh,,final,
+VKC_PR_M05_01_terraform_REPORT_РемизовКЛ_20260615.md,PR,M05,01,Infrastructure as Code с Terraform,01_reports/VKC_PR_M05_01_terraform_REPORT_РемизовКЛ_20260615.md,,final,
+VKC_PR_M05_01_terraformLog_РемизовКЛ_20260615.log,EVIDENCE,M05,01,Infrastructure as Code с Terraform,02_evidence/VKC_PR_M05_01_terraformLog_РемизовКЛ_20260615.log,VKC_PR_M05_01_terraform_REPORT_РемизовКЛ_20260615.md,final,
+VKC_PR_M05_01_network_РемизовКЛ_20260615.png,EVIDENCE,M05,01,Infrastructure as Code с Terraform,02_evidence/VKC_PR_M05_01_network_РемизовКЛ_20260615.png,VKC_PR_M05_01_terraform_REPORT_РемизовКЛ_20260615.md,final,
+VKC_PR_M05_01_complete-infra_РемизовКЛ_20260615.tf,CODE,M05,01,Infrastructure as Code с Terraform,03_code/VKC_PR_M05_01_complete-infra_РемизовКЛ_20260615.tf,,final,
 00_manifest.csv,MANIFEST,all,all,Финальный манифест сдачи,00_manifest.csv,,final,
