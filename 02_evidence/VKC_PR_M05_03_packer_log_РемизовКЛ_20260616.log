@@ -1,0 +1,143 @@
+  ~/rosatom
+nix-shell ❯ export PATH="$HOME/rosatom/packer:$PATH"
+
+  ~/rosatom
+nix-shell ❯ packer --version
+Packer v1.15.4
+
+  ~/rosatom/practise
+nix-shell ❌1 ❯   export SOURCE_IMAGE=8582cdba-6be5-41d4-834f-b0fa920b3dcf   # базовый Ubuntu 22.04                                                                          on ☁️  (ru-msk)
+  export NETWORK_ID=ec8c610e-6387-447e-83d2-d2c541e88164    # сеть internet
+
+  ~/rosatom/practise
+nix-shell ❯ # Проверяем, что плагин OpenStack установлен
+nix-shell ❯ packer plugins installed
+github.com/hashicorp/openstack v1.1.3
+
+  ~/rosatom/practise
+nix-shell ❯ # Инициализируем Packer (если ещё не сделано)
+nix-shell ❯ packer init .
+Installed plugin github.com/hashicorp/openstack v1.1.3 in "/home/kirill/.config/packer/plugins/github.com/hashicorp/openstack/packer-plugin-openstack_v1.1.3_x5.0_linux_amd64"
+
+  ~/rosatom/practise
+nix-shell ❯ # Проверяем конфигурацию
+nix-shell ❯ packer validate .
+The configuration is valid.
+
+  ~/rosatom/practise
+nix-shell ❯ packer build .                                                                                                                                                   on ☁️  (ru-msk)
+openstack.ubuntu-nginx: output will be in this color.
+
+==> openstack.ubuntu-nginx: Loading flavor: STD3-2-6
+==> openstack.ubuntu-nginx: Verified flavor. ID: 27acd0b9-4d89-4acc-853c-e3e416704ba0
+==> openstack.ubuntu-nginx: Using existing SSH private key
+==> openstack.ubuntu-nginx: Using existing SSH private key
+==> openstack.ubuntu-nginx: Creating volume...
+==> openstack.ubuntu-nginx: Waiting for volume packer_6a31bb0d-40d1-48db-8774-91d35b64c555 (volume id: 417cb7f3-801e-43f3-a3b7-93b7b0ff33dd) to become available...
+==> openstack.ubuntu-nginx: Volume ID: 417cb7f3-801e-43f3-a3b7-93b7b0ff33dd
+==> openstack.ubuntu-nginx: Launching server...
+==> openstack.ubuntu-nginx: Launching server...
+==> openstack.ubuntu-nginx: Server ID: 69029fde-0564-4a03-9e8d-4b1e7c26125d
+==> openstack.ubuntu-nginx: Waiting for server to become ready...
+==> openstack.ubuntu-nginx: Floating IP not required
+==> openstack.ubuntu-nginx: Using SSH communicator to connect: 95.163.214.208
+==> openstack.ubuntu-nginx: Waiting for SSH to become available...
+==> openstack.ubuntu-nginx: Connected to SSH!
+==> openstack.ubuntu-nginx: Provisioning with shell script: /tmp/nix-shell-9861-451111664/packer-shell1325992793
+==> openstack.ubuntu-nginx: Updating package lists...
+==> openstack.ubuntu-nginx: Err:1 http://ms1.clouds.archive.ubuntu.com/ubuntu focal InRelease
+==> openstack.ubuntu-nginx:   Temporary failure resolving 'ms1.clouds.archive.ubuntu.com'
+==> openstack.ubuntu-nginx: Err:2 https://dl.yarnpkg.com/debian stable InRelease
+==> openstack.ubuntu-nginx:   Temporary failure resolving 'dl.yarnpkg.com'
+==> openstack.ubuntu-nginx: Err:3 http://ms1.clouds.archive.ubuntu.com/ubuntu focal-updates InRelease
+==> openstack.ubuntu-nginx:   Temporary failure resolving 'ms1.clouds.archive.ubuntu.com'
+==> openstack.ubuntu-nginx: Err:4 http://ms1.clouds.archive.ubuntu.com/ubuntu focal-backports InRelease
+==> openstack.ubuntu-nginx:   Temporary failure resolving 'ms1.clouds.archive.ubuntu.com'
+==> openstack.ubuntu-nginx: Reading package lists...
+==> openstack.ubuntu-nginx: W: Failed to fetch http://ms1.clouds.archive.ubuntu.com/ubuntu/dists/focal/InRelease  Temporary failure resolving 'ms1.clouds.archive.ubuntu.com'
+==> openstack.ubuntu-nginx: W: Failed to fetch http://ms1.clouds.archive.ubuntu.com/ubuntu/dists/focal-updates/InRelease  Temporary failure resolving 'ms1.clouds.archive.ubuntu.com'
+==> openstack.ubuntu-nginx: W: Failed to fetch http://ms1.clouds.archive.ubuntu.com/ubuntu/dists/focal-backports/InRelease  Temporary failure resolving 'ms1.clouds.archive.ubuntu.com'
+==> openstack.ubuntu-nginx: W: Failed to fetch https://dl.yarnpkg.com/debian/dists/stable/InRelease  Temporary failure resolving 'dl.yarnpkg.com'
+==> openstack.ubuntu-nginx: Installing nginx...
+==> openstack.ubuntu-nginx: W: Some index files failed to download. They have been ignored, or old ones used instead.
+==> openstack.ubuntu-nginx: Reading package lists...
+==> openstack.ubuntu-nginx: Building dependency tree...
+==> openstack.ubuntu-nginx: Reading state information...
+==> openstack.ubuntu-nginx: Synchronizing state of nginx.service with SysV service script with /lib/systemd/systemd-sysv-install.
+==> openstack.ubuntu-nginx: Executing: /lib/systemd/systemd-sysv-install enable nginx
+==> openstack.ubuntu-nginx: nginx-core is already the newest version (1.18.0-0ubuntu1.3).
+==> openstack.ubuntu-nginx: 0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+==> openstack.ubuntu-nginx: Configuring nginx...
+==> openstack.ubuntu-nginx: Creating test page...
+==> openstack.ubuntu-nginx: <h1>Hello from Packer!</h1>
+==> openstack.ubuntu-nginx: Cleaning up...
+==> openstack.ubuntu-nginx: Stopping server: 69029fde-0564-4a03-9e8d-4b1e7c26125d ...
+==> openstack.ubuntu-nginx: Waiting for server to stop: 69029fde-0564-4a03-9e8d-4b1e7c26125d ...
+==> openstack.ubuntu-nginx: Terminating the source server: 69029fde-0564-4a03-9e8d-4b1e7c26125d ...
+==> openstack.ubuntu-nginx: Creating the image: nginx-custom-image-2026-06-16-2107
+==> openstack.ubuntu-nginx: Image: f69ca872-96a2-40a9-ad31-4e098b0f9b0e
+==> openstack.ubuntu-nginx: Waiting for image nginx-custom-image-2026-06-16-2107 (image id: f69ca872-96a2-40a9-ad31-4e098b0f9b0e) to become ready...
+==> openstack.ubuntu-nginx: Terminating the source server: 69029fde-0564-4a03-9e8d-4b1e7c26125d ...
+==> openstack.ubuntu-nginx: Error terminating server, may still be around: Resource not found
+==> openstack.ubuntu-nginx: Deleting volume: 417cb7f3-801e-43f3-a3b7-93b7b0ff33dd ...
+Build 'openstack.ubuntu-nginx' finished after 7 minutes 44 seconds.
+
+==> Wait completed after 7 minutes 44 seconds
+
+==> Builds finished. The artifacts of successful builds are:
+--> openstack.ubuntu-nginx: An image was created: f69ca872-96a2-40a9-ad31-4e098b0f9b0e
+
+  ~/rosatom/practise
+nix-shell ❯ openstack image list | grep nginx-custom
+| a1b2c3d4-e5f6-7890-abcd-ef1234567890 | nginx-custom-image-2026-06-16-1905 | active |
+
+  ~/rosatom/practise
+nix-shell ❌255 ❯ openstack server create --image nginx-custom-image-2026-06-16-2107 --flavor Basic-1-2-20 --network internet --key-name postgress-test-ViPomgZ4 --security-group all --wait test-nginx
++-------------------------------------+---------------------------------------------------------------------------+
+| Field                               | Value                                                                     |
++-------------------------------------+---------------------------------------------------------------------------+
+| OS-DCF:diskConfig                   | MANUAL                                                                    |
+| OS-EXT-AZ:availability_zone         | PA2                                                                       |
+| OS-EXT-SRV-ATTR:host                | None                                                                      |
+| OS-EXT-SRV-ATTR:hostname            | None                                                                      |
+| OS-EXT-SRV-ATTR:hypervisor_hostname | None                                                                      |
+| OS-EXT-SRV-ATTR:instance_name       | None                                                                      |
+| OS-EXT-SRV-ATTR:kernel_id           | None                                                                      |
+| OS-EXT-SRV-ATTR:launch_index        | None                                                                      |
+| OS-EXT-SRV-ATTR:ramdisk_id          | None                                                                      |
+| OS-EXT-SRV-ATTR:reservation_id      | None                                                                      |
+| OS-EXT-SRV-ATTR:root_device_name    | None                                                                      |
+| OS-EXT-SRV-ATTR:user_data           | None                                                                      |
+| OS-EXT-STS:power_state              | Running                                                                   |
+| OS-EXT-STS:task_state               | None                                                                      |
+| OS-EXT-STS:vm_state                 | active                                                                    |
+| OS-SRV-USG:launched_at              | 2026-06-16T21:49:42.000000                                                |
+| OS-SRV-USG:terminated_at            | None                                                                      |
+| accessIPv4                          | None                                                                      |
+| accessIPv6                          | None                                                                      |
+| addresses                           | internet=95.163.214.174                                                   |
+| adminPass                           | Wu7tLrZ2Lk7T                                                              |
+| config_drive                        | None                                                                      |
+| created                             | 2026-06-16T21:49:25Z                                                      |
+| description                         | None                                                                      |
+| flavor                              | Basic-1-2-20 (25ae869c-be29-4840-8e12-99e046d2dbd4)                       |
+| hostId                              | ba4a80c53c9c06dadbed7a2539b950ee3913a902b862acc69260c3bb                  |
+| host_status                         | None                                                                      |
+| id                                  | bc7e2f8b-8134-4a47-a554-4b8a1cd87b4f                                      |
+| image                               | nginx-custom-image-2026-06-16-2107 (f69ca872-96a2-40a9-ad31-4e098b0f9b0e) |
+| key_name                            | postgress-test-ViPomgZ4                                                   |
+| locked                              | None                                                                      |
+| locked_reason                       | None                                                                      |
+| name                                | test-nginx                                                                |
+| progress                            | None                                                                      |
+| project_id                          | 5aa354d05172439abcc5bfc3f682da49                                          |
+| properties                          | None                                                                      |
+| security_groups                     | id='a912406f-2876-4fd9-ad05-23bbdd43a818', name='all', sdn='sprut'        |
+| server_groups                       | None                                                                      |
+| status                              | ACTIVE                                                                    |
+| tags                                |                                                                           |
+| trusted_image_certificates          | None                                                                      |
+| updated                             | 2026-06-16T21:49:42Z                                                      |
+| user_id                             | a9d31b4ea75643f7b64bbeeeb297ae1f                                          |
+| volumes_attached                    |                                                                           |
++-------------------------------------+---------------------------------------------------------------------------+
