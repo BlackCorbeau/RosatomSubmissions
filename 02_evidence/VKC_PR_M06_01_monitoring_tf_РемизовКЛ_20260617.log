@@ -1,0 +1,319 @@
+  ~/rosatom/terraform6-1
+nix-shell ❯ terraform apply -auto-approve                                                                                                                     via 💠 default on ☁️  (ru-msk)
+There are some problems with the CLI configuration:
+╷
+│ Warning: Unable to open CLI configuration file
+│
+│ The CLI configuration file at
+│ "/home/kirill/rosatom/terraform-demo/terraform.rc" does not exist.
+╵
+
+data.vkcs_compute_flavor.vm: Reading...
+data.vkcs_networking_router.router: Reading...
+data.vkcs_networking_network.extnet: Reading...
+data.vkcs_images_image.ubuntu: Reading...
+data.vkcs_images_image.ubuntu: Read complete after 0s [id=371e0707-6700-48d1-97d8-e1a01a443fbf]
+data.vkcs_networking_router.router: Read complete after 0s [id=913bdd47-9155-45b2-b404-5c10d0086132]
+data.vkcs_compute_flavor.vm: Read complete after 0s [id=25ae869c-be29-4840-8e12-99e046d2dbd4]
+data.vkcs_networking_network.extnet: Read complete after 0s [id=ec8c610e-6387-447e-83d2-d2c541e88164]
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # vkcs_compute_floatingip_associate.monitoring_fip_assoc will be created
+  + resource "vkcs_compute_floatingip_associate" "monitoring_fip_assoc" {
+      + floating_ip = (known after apply)
+      + id          = (known after apply)
+      + instance_id = (known after apply)
+      + region      = (known after apply)
+    }
+
+  # vkcs_compute_instance.app[0] will be created
+  + resource "vkcs_compute_instance" "app" {
+      + access_ip_v4        = (known after apply)
+      + all_metadata        = (known after apply)
+      + all_tags            = (known after apply)
+      + availability_zone   = "MS1"
+      + flavor_id           = "25ae869c-be29-4840-8e12-99e046d2dbd4"
+      + flavor_name         = (known after apply)
+      + force_delete        = false
+      + id                  = (known after apply)
+      + image_id            = (known after apply)
+      + image_name          = (known after apply)
+      + key_pair            = "monitoring-key"
+      + name                = "app-vm-1"
+      + password_data       = (known after apply)
+      + power_state         = "active"
+      + region              = (known after apply)
+      + security_group_ids  = (known after apply)
+      + security_groups     = [
+          + "monitoring-sg",
+        ]
+      + stop_before_destroy = false
+      + user_data           = "f355816eb1f6204d3318b3db355d4625d045ab6f"
+
+      + block_device {
+          + boot_index            = 0
+          + delete_on_termination = true
+          + destination_type      = "volume"
+          + source_type           = "image"
+          + uuid                  = "371e0707-6700-48d1-97d8-e1a01a443fbf"
+          + volume_size           = 10
+          + volume_type           = "ceph-ssd"
+        }
+
+      + network {
+          + access_network = false
+          + fixed_ip_v4    = (known after apply)
+          + mac            = (known after apply)
+          + name           = (known after apply)
+          + port           = (known after apply)
+          + uuid           = (known after apply)
+        }
+    }
+
+  # vkcs_compute_instance.monitoring will be created
+  + resource "vkcs_compute_instance" "monitoring" {
+      + access_ip_v4        = (known after apply)
+      + all_metadata        = (known after apply)
+      + all_tags            = (known after apply)
+      + availability_zone   = "MS1"
+      + flavor_id           = "25ae869c-be29-4840-8e12-99e046d2dbd4"
+      + flavor_name         = (known after apply)
+      + force_delete        = false
+      + id                  = (known after apply)
+      + image_id            = (known after apply)
+      + image_name          = (known after apply)
+      + key_pair            = "monitoring-key"
+      + name                = "monitoring-vm"
+      + password_data       = (known after apply)
+      + power_state         = "active"
+      + region              = (known after apply)
+      + security_group_ids  = (known after apply)
+      + security_groups     = [
+          + "monitoring-sg",
+        ]
+      + stop_before_destroy = false
+      + user_data           = "9ecd690e01cac29a10c58e9563c4ea99a7f8cf15"
+
+      + block_device {
+          + boot_index            = 0
+          + delete_on_termination = true
+          + destination_type      = "volume"
+          + source_type           = "image"
+          + uuid                  = "371e0707-6700-48d1-97d8-e1a01a443fbf"
+          + volume_size           = 10
+          + volume_type           = "ceph-ssd"
+        }
+
+      + network {
+          + access_network = false
+          + fixed_ip_v4    = (known after apply)
+          + mac            = (known after apply)
+          + name           = (known after apply)
+          + port           = (known after apply)
+          + uuid           = (known after apply)
+        }
+    }
+
+  # vkcs_compute_keypair.monitoring will be created
+  + resource "vkcs_compute_keypair" "monitoring" {
+      + fingerprint = (known after apply)
+      + id          = (known after apply)
+      + name        = "monitoring-key"
+      + private_key = (sensitive value)
+      + public_key  = <<-EOT
+            ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCpR6b3KEkuT5Y/lWNXvD/MR0z10FKUJbSKgeVIsHxyrLm4gSk1WjobE4gH9OqXOn3r5JmTiGv0hWBACy2xBMZwnrsxgJtTSzPmYCJTln9zr/b7TFOijmB9qh/2pV5m+HPvKOZUiXCvfa9yOxmB0Thpud8ANzkgFgyT+MvaHQrEhDj6XJui3di7r+7DEHN7bCb9VWWFnAswbOxMWdtoxNMcVN1GYvtRqc/1qxSG0Qs4Ph748zhJFQAaFuu7MTZQsjhBIWF3dy5i0MIqsICTzSPayMEtrt+xCxYMEJSn1jUZrvQpkOe++jW181LVi56xnVazMe4VcRA1YYXo78OQQZGeHl3o9QjO2WhNwel1o+zU8DpD6gIay0heipQlcQZr92B7OI1XPpf8iXqqOYcC3U0e7ZqG9o0oJGO4vrp/wkL5bjMAvjnYtg7rta6fl/R0onrWVnIP3CzoaKBqjpdSnuR5s3kG+BSA2INJA6t+xdNN5cL0Gw6Xd5Hq8/XgaBSBJM0= kirill@WhiteRaven
+        EOT
+      + region      = (known after apply)
+    }
+
+  # vkcs_networking_floatingip.monitoring_fip will be created
+  + resource "vkcs_networking_floatingip" "monitoring_fip" {
+      + address   = (known after apply)
+      + fixed_ip  = (known after apply)
+      + id        = (known after apply)
+      + pool      = "internet"
+      + port_id   = (known after apply)
+      + region    = (known after apply)
+      + sdn       = (known after apply)
+      + subnet_id = (known after apply)
+    }
+
+  # vkcs_networking_network.internal will be created
+  + resource "vkcs_networking_network" "internal" {
+      + admin_state_up        = true
+      + all_tags              = (known after apply)
+      + id                    = (known after apply)
+      + name                  = "monitoring-internal-net"
+      + port_security_enabled = true
+      + private_dns_domain    = (known after apply)
+      + region                = (known after apply)
+      + sdn                   = "sprut"
+    }
+
+  # vkcs_networking_router_interface.router_interface will be created
+  + resource "vkcs_networking_router_interface" "router_interface" {
+      + id        = (known after apply)
+      + port_id   = (known after apply)
+      + region    = (known after apply)
+      + router_id = "913bdd47-9155-45b2-b404-5c10d0086132"
+      + sdn       = (known after apply)
+      + subnet_id = (known after apply)
+    }
+
+  # vkcs_networking_secgroup.monitoring_sg will be created
+  + resource "vkcs_networking_secgroup" "monitoring_sg" {
+      + all_tags    = (known after apply)
+      + description = "Allow SSH, Prometheus, Grafana, Node Exporter"
+      + id          = (known after apply)
+      + name        = "monitoring-sg"
+      + region      = (known after apply)
+      + sdn         = (known after apply)
+    }
+
+  # vkcs_networking_secgroup_rule.grafana will be created
+  + resource "vkcs_networking_secgroup_rule" "grafana" {
+      + direction         = "ingress"
+      + ethertype         = "IPv4"
+      + id                = (known after apply)
+      + port_range_max    = 3000
+      + port_range_min    = 3000
+      + protocol          = "tcp"
+      + region            = (known after apply)
+      + remote_group_id   = (known after apply)
+      + remote_ip_prefix  = "0.0.0.0/0"
+      + sdn               = (known after apply)
+      + security_group_id = (known after apply)
+    }
+
+  # vkcs_networking_secgroup_rule.node_exporter will be created
+  + resource "vkcs_networking_secgroup_rule" "node_exporter" {
+      + direction         = "ingress"
+      + ethertype         = "IPv4"
+      + id                = (known after apply)
+      + port_range_max    = 9100
+      + port_range_min    = 9100
+      + protocol          = "tcp"
+      + region            = (known after apply)
+      + remote_group_id   = (known after apply)
+      + remote_ip_prefix  = "0.0.0.0/0"
+      + sdn               = (known after apply)
+      + security_group_id = (known after apply)
+    }
+
+  # vkcs_networking_secgroup_rule.prometheus will be created
+  + resource "vkcs_networking_secgroup_rule" "prometheus" {
+      + direction         = "ingress"
+      + ethertype         = "IPv4"
+      + id                = (known after apply)
+      + port_range_max    = 9090
+      + port_range_min    = 9090
+      + protocol          = "tcp"
+      + region            = (known after apply)
+      + remote_group_id   = (known after apply)
+      + remote_ip_prefix  = "0.0.0.0/0"
+      + sdn               = (known after apply)
+      + security_group_id = (known after apply)
+    }
+
+  # vkcs_networking_secgroup_rule.ssh will be created
+  + resource "vkcs_networking_secgroup_rule" "ssh" {
+      + direction         = "ingress"
+      + ethertype         = "IPv4"
+      + id                = (known after apply)
+      + port_range_max    = 22
+      + port_range_min    = 22
+      + protocol          = "tcp"
+      + region            = (known after apply)
+      + remote_group_id   = (known after apply)
+      + remote_ip_prefix  = "0.0.0.0/0"
+      + sdn               = (known after apply)
+      + security_group_id = (known after apply)
+    }
+
+  # vkcs_networking_subnet.internal will be created
+  + resource "vkcs_networking_subnet" "internal" {
+      + all_tags           = (known after apply)
+      + cidr               = "192.168.200.0/24"
+      + enable_dhcp        = true
+      + enable_private_dns = (known after apply)
+      + gateway_ip         = (known after apply)
+      + id                 = (known after apply)
+      + name               = "monitoring-internal-subnet"
+      + network_id         = (known after apply)
+      + no_gateway         = false
+      + region             = (known after apply)
+      + sdn                = (known after apply)
+
+      + allocation_pool (known after apply)
+    }
+
+Plan: 13 to add, 0 to change, 0 to destroy.
+
+Changes to Outputs:
+  + app_ips        = [
+      + (known after apply),
+    ]
+  + grafana_url    = (known after apply)
+  + monitoring_ip  = (known after apply)
+  + prometheus_url = (known after apply)
+  + ssh_password   = "debian"
+vkcs_networking_secgroup.monitoring_sg: Creating...
+vkcs_networking_floatingip.monitoring_fip: Creating...
+vkcs_networking_network.internal: Creating...
+vkcs_compute_keypair.monitoring: Creating...
+vkcs_compute_keypair.monitoring: Creation complete after 0s [id=monitoring-key]
+vkcs_networking_secgroup.monitoring_sg: Creation complete after 1s [id=8aa4eb80-45e1-4f0d-a54b-f3e0f52f853f]
+vkcs_networking_secgroup_rule.node_exporter: Creating...
+vkcs_networking_secgroup_rule.ssh: Creating...
+vkcs_networking_secgroup_rule.prometheus: Creating...
+vkcs_networking_secgroup_rule.grafana: Creating...
+vkcs_networking_secgroup_rule.ssh: Creation complete after 0s [id=fb2538b5-fc65-4743-a37e-be5789b1742d]
+vkcs_networking_secgroup_rule.prometheus: Creation complete after 0s [id=b8cc74ab-a015-4615-8975-0bfd338f8213]
+vkcs_networking_secgroup_rule.grafana: Creation complete after 1s [id=576f3bc7-b4d2-4158-b012-ca38b7561894]
+vkcs_networking_secgroup_rule.node_exporter: Creation complete after 1s [id=5dcf4a9e-c04a-4724-915a-3a29318c3f5a]
+vkcs_networking_network.internal: Creation complete after 5s [id=93dd466e-b667-4acf-8ecd-47a6e21c955b]
+vkcs_networking_subnet.internal: Creating...
+vkcs_compute_instance.app[0]: Creating...
+vkcs_networking_floatingip.monitoring_fip: Creation complete after 8s [id=7acab770-0e85-4f18-b1f3-513be0b11874]
+vkcs_networking_subnet.internal: Creation complete after 6s [id=8d7531bf-4b90-4759-b6c9-cc030061b9be]
+vkcs_networking_router_interface.router_interface: Creating...
+vkcs_compute_instance.app[0]: Still creating... [00m10s elapsed]
+vkcs_networking_router_interface.router_interface: Creation complete after 6s [id=53d6881c-5426-4cad-8fd2-9e3af842e99e]
+vkcs_compute_instance.app[0]: Still creating... [00m20s elapsed]
+vkcs_compute_instance.app[0]: Still creating... [00m30s elapsed]
+vkcs_compute_instance.app[0]: Creation complete after 34s [id=bc03c969-7f19-493e-a6d9-4cce60d5a973]
+vkcs_compute_instance.monitoring: Creating...
+vkcs_compute_instance.monitoring: Still creating... [00m10s elapsed]
+vkcs_compute_instance.monitoring: Still creating... [00m20s elapsed]
+vkcs_compute_instance.monitoring: Still creating... [00m30s elapsed]
+vkcs_compute_instance.monitoring: Still creating... [00m40s elapsed]
+vkcs_compute_instance.monitoring: Creation complete after 45s [id=8ef7a2cf-15a0-45f8-9e03-a0d83db6f4e4]
+vkcs_compute_floatingip_associate.monitoring_fip_assoc: Creating...
+vkcs_compute_floatingip_associate.monitoring_fip_assoc: Creation complete after 2s [id=95.163.215.1/8ef7a2cf-15a0-45f8-9e03-a0d83db6f4e4/]
+╷
+│ Warning: Argument is deprecated
+│
+│   with vkcs_networking_secgroup_rule.ssh,
+│   on VKC_PR_M06_01_monitoring_main_РемизовКЛ_20260617.tf line 87, in resource "vkcs_networking_secgroup_rule" "ssh":
+│   87:   ethertype         = "IPv4"
+│
+│ Only IPv4 can be used as ethertype. This argument is deprecated, please do not use it.
+│
+│ (and 15 more similar warnings elsewhere)
+╵
+
+Apply complete! Resources: 13 added, 0 changed, 0 destroyed.
+
+Outputs:
+
+app_ips = [
+  "192.168.200.9",
+]
+grafana_url = "http://95.163.215.1:3000"
+monitoring_ip = "95.163.215.1"
+prometheus_url = "http://95.163.215.1:9090"
+ssh_password = "debian"
