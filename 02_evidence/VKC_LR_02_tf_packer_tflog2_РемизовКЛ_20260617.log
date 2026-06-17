@@ -1,0 +1,104 @@
+[0m[1mdata.vkcs_networking_network.ext_net: Reading...[0m[0m
+[0m[1mdata.vkcs_networking_router.existing: Reading...[0m[0m
+[0m[1mvkcs_networking_floatingip.bastion_fip: Refreshing state... [id=31806272-e423-44d6-b717-0ebc30aa49b8][0m
+[0m[1mvkcs_networking_secgroup.web_sg: Refreshing state... [id=50fa7409-ab08-40d0-b348-740b40d6ae69][0m
+[0m[1mvkcs_networking_network.lab1_vpc: Refreshing state... [id=b15fd639-9579-4c28-b7b3-930bb27e4ef6][0m
+[0m[1mvkcs_compute_keypair.my_key: Refreshing state... [id=terraform-key-local][0m
+[0m[1mvkcs_networking_secgroup.bastion_sg: Refreshing state... [id=0768aff4-79ef-46bb-856f-b1fb7fbb2f3c][0m
+[0m[1mvkcs_networking_secgroup.lb_sg: Refreshing state... [id=b19e5742-3242-43cc-b9dc-a1f3c8c85548][0m
+[0m[1mvkcs_networking_secgroup_rule.lb_http: Refreshing state... [id=0ec567fb-2f84-4ea4-a46d-508f8fd580b4][0m
+[0m[1mdata.vkcs_networking_router.existing: Read complete after 0s [id=913bdd47-9155-45b2-b404-5c10d0086132][0m
+[0m[1mvkcs_networking_secgroup_rule.bastion_ssh: Refreshing state... [id=8187bc9a-26d2-4064-b342-9bb717421c5e][0m
+[0m[1mvkcs_networking_subnet.public: Refreshing state... [id=271affb0-b5b6-45bc-b1ed-5c777425b5cb][0m
+[0m[1mvkcs_networking_subnet.private: Refreshing state... [id=22705726-4786-4af4-af6f-147fee111c0e][0m
+[0m[1mvkcs_networking_secgroup_rule.web_ssh: Refreshing state... [id=7d8328e8-02c1-4113-aeb2-23b06575e3a3][0m
+[0m[1mvkcs_networking_secgroup_rule.web_http: Refreshing state... [id=82da250c-d494-4168-987c-83f0812356dd][0m
+[0m[1mvkcs_networking_router_interface.private: Refreshing state... [id=abc484dc-d97a-4df7-b573-043c8c788d06][0m
+[0m[1mvkcs_networking_port.web_port[0]: Refreshing state... [id=e0cf72fe-7d06-45cf-abb6-ebd80b3c17ae][0m
+[0m[1mvkcs_networking_port.web_port[1]: Refreshing state... [id=7491f4e2-508f-48a4-95b7-4aeb258cee6b][0m
+[0m[1mvkcs_networking_router_interface.public: Refreshing state... [id=ba96e156-ecca-46a3-9306-979725d30437][0m
+[0m[1mvkcs_lb_loadbalancer.main: Refreshing state... [id=211106b0-417f-4321-a65d-3a28af8911c9][0m
+[0m[1mvkcs_networking_port.bastion_port: Refreshing state... [id=f66e05c8-e5f6-4196-a488-dd6936e3388f][0m
+[0m[1mdata.vkcs_networking_network.ext_net: Read complete after 1s [id=ec8c610e-6387-447e-83d2-d2c541e88164][0m
+[0m[1mvkcs_lb_listener.http: Refreshing state... [id=2e2fce60-1216-4711-a269-d52ae59f74a7][0m
+[0m[1mvkcs_compute_instance.bastion: Refreshing state... [id=19b2c9ae-5f61-4d74-8adc-d1395227486d][0m
+[0m[1mvkcs_compute_instance.web[0]: Refreshing state... [id=055ee66f-5d95-47fb-b525-1b3112486823][0m
+[0m[1mvkcs_compute_instance.web[1]: Refreshing state... [id=8599c91f-2d68-4d93-92f3-6cc52d72de6d][0m
+[0m[1mvkcs_lb_pool.web: Refreshing state... [id=adb79d6a-050e-47a1-bad6-14fa449f82c3][0m
+[0m[1mvkcs_lb_monitor.web: Refreshing state... [id=04a25279-9b2a-4643-a7e5-f113bca62b5d][0m
+[0m[1mvkcs_lb_member.web[0]: Refreshing state... [id=201143b2-4356-403d-aecc-0bb9118c948d][0m
+[0m[1mvkcs_lb_member.web[1]: Refreshing state... [id=445360e6-5aef-4fe4-9dc0-e12d8af0bf4a][0m
+[0m[1mvkcs_compute_floatingip_associate.bastion_fip_assoc: Refreshing state... [id=95.163.215.61/19b2c9ae-5f61-4d74-8adc-d1395227486d/][0m
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  [32m+[0m create[0m
+
+Terraform will perform the following actions:
+
+[1m  # vkcs_db_instance.postgres[0m will be created
+[0m  [32m+[0m[0m resource "vkcs_db_instance" "postgres" {
+      [32m+[0m[0m availability_zone = "MS1"
+      [32m+[0m[0m flavor_id         = "2d9866a9-e955-4986-b00a-340ca54b2cac"
+      [32m+[0m[0m id                = (known after apply)
+      [32m+[0m[0m ip                = (known after apply)
+      [32m+[0m[0m name              = "lab1-postgres"
+      [32m+[0m[0m region            = (known after apply)
+      [32m+[0m[0m root_password     = (sensitive value)
+      [32m+[0m[0m size              = 10
+      [32m+[0m[0m volume_type       = "ceph-ssd"
+
+      [32m+[0m[0m datastore {
+          [32m+[0m[0m type    = "postgresql"
+          [32m+[0m[0m version = "15"
+        }
+
+      [32m+[0m[0m disk_autoexpand {
+          [32m+[0m[0m autoexpand    = true
+          [32m+[0m[0m max_disk_size = 100
+        }
+
+      [32m+[0m[0m network {
+          [32m+[0m[0m uuid = "b15fd639-9579-4c28-b7b3-930bb27e4ef6"
+        }
+    }
+
+[1mPlan:[0m [0m1 to add, 0 to change, 0 to destroy.
+[0m[1mvkcs_db_instance.postgres: Creating...[0m[0m
+[0m[1mvkcs_db_instance.postgres: Still creating... [00m10s elapsed][0m[0m
+[0m[1mvkcs_db_instance.postgres: Still creating... [00m20s elapsed][0m[0m
+[0m[1mvkcs_db_instance.postgres: Still creating... [00m30s elapsed][0m[0m
+[0m[1mvkcs_db_instance.postgres: Still creating... [00m40s elapsed][0m[0m
+[0m[1mvkcs_db_instance.postgres: Still creating... [00m50s elapsed][0m[0m
+[0m[1mvkcs_db_instance.postgres: Still creating... [01m00s elapsed][0m[0m
+[0m[1mvkcs_db_instance.postgres: Still creating... [01m10s elapsed][0m[0m
+[0m[1mvkcs_db_instance.postgres: Still creating... [01m20s elapsed][0m[0m
+[0m[1mvkcs_db_instance.postgres: Still creating... [01m30s elapsed][0m[0m
+[0m[1mvkcs_db_instance.postgres: Still creating... [01m40s elapsed][0m[0m
+[0m[1mvkcs_db_instance.postgres: Still creating... [01m50s elapsed][0m[0m
+[0m[1mvkcs_db_instance.postgres: Still creating... [02m00s elapsed][0m[0m
+[0m[1mvkcs_db_instance.postgres: Still creating... [02m10s elapsed][0m[0m
+[0m[1mvkcs_db_instance.postgres: Still creating... [02m20s elapsed][0m[0m
+[0m[1mvkcs_db_instance.postgres: Still creating... [02m30s elapsed][0m[0m
+[0m[1mvkcs_db_instance.postgres: Still creating... [02m40s elapsed][0m[0m
+[0m[1mvkcs_db_instance.postgres: Creation complete after 2m46s [id=c977e03c-06d0-4139-808d-a635713ee9fc][0m
+[33m╷[0m[0m
+[33m│[0m [0m[1m[33mWarning: [0m[0m[1mfull_security_groups_control is false. This is deprecated configuration which leads to unspecified behavior on port's security group changing. Please set full_security_groups_control to true.[0m
+[33m│[0m [0m
+[33m│[0m [0m[0m  with vkcs_networking_port.bastion_port,
+[33m│[0m [0m  on VKC_LR_02_tf_packer_compute_РемизовКЛ_20260617.tf line 8, in resource "vkcs_networking_port" "bastion_port":
+[33m│[0m [0m   8: resource "vkcs_networking_port" "bastion_port" [4m{[0m[0m
+[33m│[0m [0m
+[33m│[0m [0m(and 2 more similar warnings elsewhere)
+[33m╵[0m[0m
+[0m[1m[32m
+Apply complete! Resources: 1 added, 0 changed, 0 destroyed.[0m
+[0m[1m[32m
+Outputs:
+
+[0mbastion_public_ip = "95.163.215.61"
+lb_public_ip = "10.0.1.9"
+web_private_ips = [
+  "10.0.2.148",
+  "10.0.2.149",
+]

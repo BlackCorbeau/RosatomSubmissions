@@ -1,0 +1,351 @@
+  ~/rosatom/terraform_lab5
+nix-shell ❯ terraform apply -auto-approve | tee VKC_LR_02_tf_packer_tflog_РемизовКЛ_20260617.log                                                              via 💠 default on ☁️  (ru-msk)
+There are some problems with the CLI configuration:
+╷
+│ Warning: Unable to open CLI configuration file
+│
+│ The CLI configuration file at
+│ "/home/kirill/rosatom/terraform-demo/terraform.rc" does not exist.
+╵
+
+data.vkcs_networking_network.ext_net: Reading...
+data.vkcs_networking_router.existing: Reading...
+vkcs_networking_secgroup.bastion_sg: Refreshing state... [id=0768aff4-79ef-46bb-856f-b1fb7fbb2f3c]
+vkcs_compute_keypair.my_key: Refreshing state... [id=terraform-key-local]
+vkcs_networking_secgroup.lb_sg: Refreshing state... [id=b19e5742-3242-43cc-b9dc-a1f3c8c85548]
+vkcs_networking_secgroup.web_sg: Refreshing state... [id=50fa7409-ab08-40d0-b348-740b40d6ae69]
+vkcs_networking_floatingip.bastion_fip: Refreshing state... [id=31806272-e423-44d6-b717-0ebc30aa49b8]
+vkcs_networking_network.lab1_vpc: Refreshing state... [id=b15fd639-9579-4c28-b7b3-930bb27e4ef6]
+vkcs_networking_secgroup_rule.lb_http: Refreshing state... [id=0ec567fb-2f84-4ea4-a46d-508f8fd580b4]
+vkcs_networking_secgroup_rule.web_http: Refreshing state... [id=82da250c-d494-4168-987c-83f0812356dd]
+data.vkcs_networking_router.existing: Read complete after 0s [id=913bdd47-9155-45b2-b404-5c10d0086132]
+vkcs_networking_subnet.public: Refreshing state... [id=271affb0-b5b6-45bc-b1ed-5c777425b5cb]
+vkcs_networking_subnet.private: Refreshing state... [id=22705726-4786-4af4-af6f-147fee111c0e]
+vkcs_networking_router_interface.private: Refreshing state... [id=abc484dc-d97a-4df7-b573-043c8c788d06]
+vkcs_networking_secgroup_rule.web_ssh: Refreshing state... [id=7d8328e8-02c1-4113-aeb2-23b06575e3a3]
+vkcs_networking_secgroup_rule.bastion_ssh: Refreshing state... [id=8187bc9a-26d2-4064-b342-9bb717421c5e]
+vkcs_lb_loadbalancer.main: Refreshing state... [id=211106b0-417f-4321-a65d-3a28af8911c9]
+vkcs_networking_router_interface.public: Refreshing state... [id=ba96e156-ecca-46a3-9306-979725d30437]
+data.vkcs_networking_network.ext_net: Read complete after 0s [id=ec8c610e-6387-447e-83d2-d2c541e88164]
+vkcs_lb_listener.http: Refreshing state... [id=2e2fce60-1216-4711-a269-d52ae59f74a7]
+vkcs_lb_pool.web: Refreshing state... [id=adb79d6a-050e-47a1-bad6-14fa449f82c3]
+vkcs_lb_monitor.web: Refreshing state... [id=04a25279-9b2a-4643-a7e5-f113bca62b5d]
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # vkcs_compute_floatingip_associate.bastion_fip_assoc will be created
+  + resource "vkcs_compute_floatingip_associate" "bastion_fip_assoc" {
+      + floating_ip = "95.163.215.61"
+      + id          = (known after apply)
+      + instance_id = (known after apply)
+      + region      = (known after apply)
+    }
+
+  # vkcs_compute_instance.bastion will be created
+  + resource "vkcs_compute_instance" "bastion" {
+      + access_ip_v4        = (known after apply)
+      + all_metadata        = (known after apply)
+      + all_tags            = (known after apply)
+      + availability_zone   = (known after apply)
+      + flavor_id           = "df3c499a-044f-41d2-8612-d303adc613cc"
+      + flavor_name         = (known after apply)
+      + force_delete        = false
+      + id                  = (known after apply)
+      + image_id            = "a4e699d3-a66d-45e5-bb5d-70ea7c8de62d"
+      + image_name          = (known after apply)
+      + key_pair            = "terraform-key-local"
+      + name                = "bastion"
+      + password_data       = (known after apply)
+      + power_state         = "active"
+      + region              = (known after apply)
+      + security_group_ids  = (known after apply)
+      + security_groups     = (known after apply)
+      + stop_before_destroy = false
+
+      + network {
+          + access_network = false
+          + fixed_ip_v4    = (known after apply)
+          + mac            = (known after apply)
+          + name           = (known after apply)
+          + port           = (known after apply)
+          + uuid           = (known after apply)
+        }
+    }
+
+  # vkcs_compute_instance.web[0] will be created
+  + resource "vkcs_compute_instance" "web" {
+      + access_ip_v4        = (known after apply)
+      + all_metadata        = (known after apply)
+      + all_tags            = (known after apply)
+      + availability_zone   = (known after apply)
+      + flavor_id           = "25ae869c-be29-4840-8e12-99e046d2dbd4"
+      + flavor_name         = (known after apply)
+      + force_delete        = false
+      + id                  = (known after apply)
+      + image_id            = "a31acc16-4703-468b-bc5b-bf07952f66b2"
+      + image_name          = (known after apply)
+      + key_pair            = "terraform-key-local"
+      + name                = "web-1"
+      + password_data       = (known after apply)
+      + power_state         = "active"
+      + region              = (known after apply)
+      + security_group_ids  = (known after apply)
+      + security_groups     = (known after apply)
+      + stop_before_destroy = false
+
+      + network {
+          + access_network = false
+          + fixed_ip_v4    = (known after apply)
+          + mac            = (known after apply)
+          + name           = (known after apply)
+          + port           = (known after apply)
+          + uuid           = (known after apply)
+        }
+    }
+
+  # vkcs_compute_instance.web[1] will be created
+  + resource "vkcs_compute_instance" "web" {
+      + access_ip_v4        = (known after apply)
+      + all_metadata        = (known after apply)
+      + all_tags            = (known after apply)
+      + availability_zone   = (known after apply)
+      + flavor_id           = "25ae869c-be29-4840-8e12-99e046d2dbd4"
+      + flavor_name         = (known after apply)
+      + force_delete        = false
+      + id                  = (known after apply)
+      + image_id            = "a31acc16-4703-468b-bc5b-bf07952f66b2"
+      + image_name          = (known after apply)
+      + key_pair            = "terraform-key-local"
+      + name                = "web-2"
+      + password_data       = (known after apply)
+      + power_state         = "active"
+      + region              = (known after apply)
+      + security_group_ids  = (known after apply)
+      + security_groups     = (known after apply)
+      + stop_before_destroy = false
+
+      + network {
+          + access_network = false
+          + fixed_ip_v4    = (known after apply)
+          + mac            = (known after apply)
+          + name           = (known after apply)
+          + port           = (known after apply)
+          + uuid           = (known after apply)
+        }
+    }
+
+  # vkcs_lb_member.web[0] will be created
+  + resource "vkcs_lb_member" "web" {
+      + address        = (known after apply)
+      + admin_state_up = true
+      + id             = (known after apply)
+      + name           = "web-member-1"
+      + pool_id        = "adb79d6a-050e-47a1-bad6-14fa449f82c3"
+      + protocol_port  = 80
+      + region         = (known after apply)
+      + subnet_id      = "22705726-4786-4af4-af6f-147fee111c0e"
+      + weight         = (known after apply)
+    }
+
+  # vkcs_lb_member.web[1] will be created
+  + resource "vkcs_lb_member" "web" {
+      + address        = (known after apply)
+      + admin_state_up = true
+      + id             = (known after apply)
+      + name           = "web-member-2"
+      + pool_id        = "adb79d6a-050e-47a1-bad6-14fa449f82c3"
+      + protocol_port  = 80
+      + region         = (known after apply)
+      + subnet_id      = "22705726-4786-4af4-af6f-147fee111c0e"
+      + weight         = (known after apply)
+    }
+
+  # vkcs_networking_port.bastion_port will be created
+  + resource "vkcs_networking_port" "bastion_port" {
+      + admin_state_up               = true
+      + all_fixed_ips                = (known after apply)
+      + all_security_group_ids       = (known after apply)
+      + all_tags                     = (known after apply)
+      + device_id                    = (known after apply)
+      + device_owner                 = (known after apply)
+      + dns_assignment               = (known after apply)
+      + dns_name                     = (known after apply)
+      + full_security_groups_control = false
+      + id                           = (known after apply)
+      + mac_address                  = (known after apply)
+      + name                         = "bastion-port"
+      + network_id                   = "b15fd639-9579-4c28-b7b3-930bb27e4ef6"
+      + port_security_enabled        = true
+      + region                       = (known after apply)
+      + sdn                          = (known after apply)
+      + security_group_ids           = [
+          + "0768aff4-79ef-46bb-856f-b1fb7fbb2f3c",
+        ]
+
+      + fixed_ip {
+          + subnet_id = "271affb0-b5b6-45bc-b1ed-5c777425b5cb"
+        }
+    }
+
+  # vkcs_networking_port.web_port[0] will be created
+  + resource "vkcs_networking_port" "web_port" {
+      + admin_state_up               = true
+      + all_fixed_ips                = (known after apply)
+      + all_security_group_ids       = (known after apply)
+      + all_tags                     = (known after apply)
+      + device_id                    = (known after apply)
+      + device_owner                 = (known after apply)
+      + dns_assignment               = (known after apply)
+      + dns_name                     = (known after apply)
+      + full_security_groups_control = false
+      + id                           = (known after apply)
+      + mac_address                  = (known after apply)
+      + name                         = "web-port-1"
+      + network_id                   = "b15fd639-9579-4c28-b7b3-930bb27e4ef6"
+      + port_security_enabled        = true
+      + region                       = (known after apply)
+      + sdn                          = (known after apply)
+      + security_group_ids           = [
+          + "50fa7409-ab08-40d0-b348-740b40d6ae69",
+        ]
+
+      + fixed_ip {
+          + subnet_id = "22705726-4786-4af4-af6f-147fee111c0e"
+        }
+    }
+
+  # vkcs_networking_port.web_port[1] will be created
+  + resource "vkcs_networking_port" "web_port" {
+      + admin_state_up               = true
+      + all_fixed_ips                = (known after apply)
+      + all_security_group_ids       = (known after apply)
+      + all_tags                     = (known after apply)
+      + device_id                    = (known after apply)
+      + device_owner                 = (known after apply)
+      + dns_assignment               = (known after apply)
+      + dns_name                     = (known after apply)
+      + full_security_groups_control = false
+      + id                           = (known after apply)
+      + mac_address                  = (known after apply)
+      + name                         = "web-port-2"
+      + network_id                   = "b15fd639-9579-4c28-b7b3-930bb27e4ef6"
+      + port_security_enabled        = true
+      + region                       = (known after apply)
+      + sdn                          = (known after apply)
+      + security_group_ids           = [
+          + "50fa7409-ab08-40d0-b348-740b40d6ae69",
+        ]
+
+      + fixed_ip {
+          + subnet_id = "22705726-4786-4af4-af6f-147fee111c0e"
+        }
+    }
+
+Plan: 9 to add, 0 to change, 0 to destroy.
+
+Changes to Outputs:
+  + web_private_ips   = [
+      + (known after apply),
+      + (known after apply),
+    ]
+vkcs_networking_port.web_port[1]: Creating...
+vkcs_networking_port.web_port[0]: Creating...
+vkcs_networking_port.bastion_port: Creating...
+vkcs_networking_port.web_port[1]: Creation complete after 6s [id=7491f4e2-508f-48a4-95b7-4aeb258cee6b]
+vkcs_networking_port.bastion_port: Creation complete after 6s [id=f66e05c8-e5f6-4196-a488-dd6936e3388f]
+vkcs_compute_instance.bastion: Creating...
+vkcs_networking_port.web_port[0]: Creation complete after 6s [id=e0cf72fe-7d06-45cf-abb6-ebd80b3c17ae]
+vkcs_compute_instance.web[1]: Creating...
+vkcs_compute_instance.web[0]: Creating...
+vkcs_compute_instance.bastion: Still creating... [00m10s elapsed]
+vkcs_compute_instance.web[0]: Still creating... [00m10s elapsed]
+vkcs_compute_instance.web[1]: Still creating... [00m10s elapsed]
+vkcs_compute_instance.bastion: Still creating... [00m20s elapsed]
+vkcs_compute_instance.web[0]: Still creating... [00m20s elapsed]
+vkcs_compute_instance.web[1]: Still creating... [00m20s elapsed]
+vkcs_compute_instance.bastion: Still creating... [00m30s elapsed]
+vkcs_compute_instance.web[0]: Still creating... [00m30s elapsed]
+vkcs_compute_instance.web[1]: Still creating... [00m30s elapsed]
+vkcs_compute_instance.web[1]: Creation complete after 33s [id=8599c91f-2d68-4d93-92f3-6cc52d72de6d]
+vkcs_compute_instance.bastion: Still creating... [00m40s elapsed]
+vkcs_compute_instance.web[0]: Still creating... [00m40s elapsed]
+vkcs_compute_instance.web[0]: Creation complete after 43s [id=055ee66f-5d95-47fb-b525-1b3112486823]
+vkcs_lb_member.web[1]: Creating...
+vkcs_lb_member.web[0]: Creating...
+vkcs_compute_instance.bastion: Still creating... [00m50s elapsed]
+vkcs_lb_member.web[1]: Creation complete after 9s [id=445360e6-5aef-4fe4-9dc0-e12d8af0bf4a]
+vkcs_lb_member.web[0]: Still creating... [00m10s elapsed]
+vkcs_lb_member.web[0]: Creation complete after 15s [id=201143b2-4356-403d-aecc-0bb9118c948d]
+vkcs_compute_instance.bastion: Still creating... [01m00s elapsed]
+vkcs_compute_instance.bastion: Still creating... [01m10s elapsed]
+vkcs_compute_instance.bastion: Still creating... [01m20s elapsed]
+vkcs_compute_instance.bastion: Still creating... [01m30s elapsed]
+vkcs_compute_instance.bastion: Still creating... [01m40s elapsed]
+vkcs_compute_instance.bastion: Still creating... [01m50s elapsed]
+vkcs_compute_instance.bastion: Still creating... [02m00s elapsed]
+vkcs_compute_instance.bastion: Still creating... [02m10s elapsed]
+vkcs_compute_instance.bastion: Still creating... [02m20s elapsed]
+vkcs_compute_instance.bastion: Still creating... [02m30s elapsed]
+vkcs_compute_instance.bastion: Still creating... [02m40s elapsed]
+vkcs_compute_instance.bastion: Still creating... [02m50s elapsed]
+vkcs_compute_instance.bastion: Still creating... [03m00s elapsed]
+vkcs_compute_instance.bastion: Still creating... [03m10s elapsed]
+vkcs_compute_instance.bastion: Still creating... [03m20s elapsed]
+vkcs_compute_instance.bastion: Still creating... [03m30s elapsed]
+vkcs_compute_instance.bastion: Still creating... [03m40s elapsed]
+vkcs_compute_instance.bastion: Still creating... [03m50s elapsed]
+vkcs_compute_instance.bastion: Still creating... [04m00s elapsed]
+vkcs_compute_instance.bastion: Still creating... [04m10s elapsed]
+vkcs_compute_instance.bastion: Still creating... [04m20s elapsed]
+vkcs_compute_instance.bastion: Still creating... [04m30s elapsed]
+vkcs_compute_instance.bastion: Still creating... [04m40s elapsed]
+vkcs_compute_instance.bastion: Still creating... [04m50s elapsed]
+vkcs_compute_instance.bastion: Still creating... [05m00s elapsed]
+vkcs_compute_instance.bastion: Still creating... [05m10s elapsed]
+vkcs_compute_instance.bastion: Still creating... [05m20s elapsed]
+vkcs_compute_instance.bastion: Still creating... [05m30s elapsed]
+vkcs_compute_instance.bastion: Still creating... [05m40s elapsed]
+vkcs_compute_instance.bastion: Still creating... [05m50s elapsed]
+vkcs_compute_instance.bastion: Still creating... [06m00s elapsed]
+vkcs_compute_instance.bastion: Still creating... [06m10s elapsed]
+vkcs_compute_instance.bastion: Still creating... [06m20s elapsed]
+vkcs_compute_instance.bastion: Still creating... [06m30s elapsed]
+vkcs_compute_instance.bastion: Still creating... [06m40s elapsed]
+vkcs_compute_instance.bastion: Still creating... [06m50s elapsed]
+vkcs_compute_instance.bastion: Still creating... [07m00s elapsed]
+vkcs_compute_instance.bastion: Still creating... [07m10s elapsed]
+vkcs_compute_instance.bastion: Still creating... [07m20s elapsed]
+vkcs_compute_instance.bastion: Still creating... [07m30s elapsed]
+vkcs_compute_instance.bastion: Still creating... [07m40s elapsed]
+vkcs_compute_instance.bastion: Still creating... [07m50s elapsed]
+vkcs_compute_instance.bastion: Still creating... [08m00s elapsed]
+vkcs_compute_instance.bastion: Still creating... [08m10s elapsed]
+vkcs_compute_instance.bastion: Still creating... [08m20s elapsed]
+vkcs_compute_instance.bastion: Still creating... [08m30s elapsed]
+vkcs_compute_instance.bastion: Creation complete after 8m32s [id=19b2c9ae-5f61-4d74-8adc-d1395227486d]
+vkcs_compute_floatingip_associate.bastion_fip_assoc: Creating...
+vkcs_compute_floatingip_associate.bastion_fip_assoc: Creation complete after 3s [id=95.163.215.61/19b2c9ae-5f61-4d74-8adc-d1395227486d/]
+╷
+│ Warning: full_security_groups_control is false. This is deprecated configuration which leads to unspecified behavior on port's security group changing. Please set full_security_groups_control to true.
+│
+│   with vkcs_networking_port.bastion_port,
+│   on VKC_LR_02_tf_packer_compute_РемизовКЛ_20260617.tf line 8, in resource "vkcs_networking_port" "bastion_port":
+│    8: resource "vkcs_networking_port" "bastion_port" {
+│
+│ (and 2 more similar warnings elsewhere)
+╵
+
+Apply complete! Resources: 9 added, 0 changed, 0 destroyed.
+
+Outputs:
+
+bastion_public_ip = "95.163.215.61"
+lb_public_ip = "10.0.1.9"
+web_private_ips = [
+  "10.0.2.148",
+  "10.0.2.149",
+]

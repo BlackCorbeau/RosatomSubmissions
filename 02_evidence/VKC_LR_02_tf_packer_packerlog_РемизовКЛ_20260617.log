@@ -1,0 +1,80 @@
+  ~/rosatom/practise
+nix-shell ❯ openstack server list                                                                                                                                            on ☁️  (ru-msk)
++--------------------------------------+--------+--------+------------------------+--------------------------+----------+
+| ID                                   | Name   | Status | Networks               | Image                    | Flavor   |
++--------------------------------------+--------+--------+------------------------+--------------------------+----------+
+| 72aeeb86-1766-4ced-98d3-27540d8be696 | packer | ACTIVE | internet=95.163.215.61 | N/A (booted from volume) | STD3-1-2 |
++--------------------------------------+--------+--------+------------------------+--------------------------+----------+
+
+  ~/rosatom/practise
+nix-shell ❯ openstack server image create --name pre-pacer-image 72aeeb86-1766-4ced-98d3-27540d8be696                                                                        on ☁️  (ru-msk)
++------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Field            | Value                                                                                                                                                                  |
++------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| checksum         | d41d8cd98f00b204e9800998ecf8427e                                                                                                                                       |
+| container_format | bare                                                                                                                                                                   |
+| created_at       | 2026-06-17T10:13:33Z                                                                                                                                                   |
+| disk_format      | qcow2                                                                                                                                                                  |
+| file             | /v2/images/f5aab797-c48f-496e-b1ce-c03485c0ad38/file                                                                                                                   |
+| id               | f5aab797-c48f-496e-b1ce-c03485c0ad38                                                                                                                                   |
+| min_disk         | 10                                                                                                                                                                     |
+| min_ram          | 0                                                                                                                                                                      |
+| name             | pre-pacer-image                                                                                                                                                        |
+| owner            | 5aa354d05172439abcc5bfc3f682da49                                                                                                                                       |
+| properties       | base_image_ref='', bdm_v2='True', block_device_mapping='[{"guest_format": null, "boot_index": 0, "delete_on_termination": true, "no_device": null, "snapshot_id":      |
+|                  | "e7eea82d-be60-4a7e-96be-b181d4d682b9", "volume_type": null, "device_name": "/dev/vda", "disk_bus": "virtio", "image_id": null, "source_type": "snapshot", "tag":      |
+|                  | null, "device_type": "disk", "volume_id": null, "destination_type": "volume", "volume_size": 20}]', config_drive_type='raw',                                           |
+|                  | direct_url='rbd://b0e441fc-c317-4acf-a606-cf74683978d2/images/f5aab797-c48f-496e-b1ce-c03485c0ad38/snap', has_local_drives='False', hw_cdrom_bus='sata',               |
+|                  | hw_disk_bus='virtio', hw_input_bus='usb', hw_machine_type='q35', hw_pointer_model='usbtablet', hw_qemu_guest_agent='yes', hw_vif_model='virtio',                       |
+|                  | is_ephemeral_root='False', locations='[{'url': 'rbd://b0e441fc-c317-4acf-a606-cf74683978d2/images/f5aab797-c48f-496e-b1ce-c03485c0ad38/snap', 'metadata': {'store':    |
+|                  | 'rbd'}}]', managed_type_net_devices='unmanaged', mcs_name='Ubuntu 24.04', mcs_os_distro='ubuntu', mcs_os_type='linux', mcs_os_version='24.04', os_admin_user='ubuntu', |
+|                  | os_distro='ubuntu24.04', os_hidden='False', os_require_quiesce='True', os_type='linux', os_version='24.04', owner_project_name='mcs3340419193',                        |
+|                  | owner_specified.openstack.md5='6d7c8d77a960fe793c943982c318b4f3', owner_specified.openstack.object='images/ubuntu-24-202602051634.gite7a38aaf',                        |
+|                  | owner_specified.openstack.sha256='', owner_user_name='remizov.kirill2005@yandex.ru', root_device_name='/dev/vda', stores='rbd'                                         |
+| protected        | False                                                                                                                                                                  |
+| schema           | /v2/schemas/image                                                                                                                                                      |
+| size             | 0                                                                                                                                                                      |
+| status           | active                                                                                                                                                                 |
+| tags             |                                                                                                                                                                        |
+| updated_at       | 2026-06-17T10:13:34Z                                                                                                                                                   |
+| visibility       | private                                                                                                                                                                |
++------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+  ~/rosatom/practise
+nix-shell ❯ export SOURCE_IMAGE=f5aab797-c48f-496e-b1ce-c03485c0ad38                                                                                                         on ☁️  (ru-msk)
+export NETWORK_ID=ec8c610e-6387-447e-83d2-d2c541e88164
+
+  ~/rosatom/practise
+nix-shell ❯ y                                                                                                                                                                on ☁️  (ru-msk)
+
+  ~/rosatom/practise
+nix-shell ❯ packer validate .                                                                                                                                                on ☁️  (ru-msk)
+The configuration is valid.
+
+  ~/rosatom/practise
+nix-shell ❯ packer build .                                                                                                                                                   on ☁️  (ru-msk)
+openstack.ubuntu-nginx: output will be in this color.
+
+==> openstack.ubuntu-nginx: Loading flavor: STD3-2-6
+==> openstack.ubuntu-nginx: Verified flavor. ID: 27acd0b9-4d89-4acc-853c-e3e416704ba0
+==> openstack.ubuntu-nginx: Using existing SSH private key
+==> openstack.ubuntu-nginx: Using existing SSH private key
+==> openstack.ubuntu-nginx: Launching server...
+==> openstack.ubuntu-nginx: Launching server...
+==> openstack.ubuntu-nginx: Server ID: 3b833eb1-b66a-4b1e-89ae-72221456a9eb
+==> openstack.ubuntu-nginx: Waiting for server to become ready...
+==> openstack.ubuntu-nginx: Floating IP not required
+==> openstack.ubuntu-nginx: Using SSH communicator to connect: 95.163.215.61
+==> openstack.ubuntu-nginx: Waiting for SSH to become available...
+==> openstack.ubuntu-nginx: Connected to SSH!
+==> openstack.ubuntu-nginx: Stopping server: 3b833eb1-b66a-4b1e-89ae-72221456a9eb ...
+==> openstack.ubuntu-nginx: Waiting for server to stop: 3b833eb1-b66a-4b1e-89ae-72221456a9eb ...
+==> openstack.ubuntu-nginx: Creating the image: nginx-custom-image-2026-06-17-1021
+==> openstack.ubuntu-nginx: Image: a31acc16-4703-468b-bc5b-bf07952f66b2
+==> openstack.ubuntu-nginx: Waiting for image nginx-custom-image-2026-06-17-1021 (image id: a31acc16-4703-468b-bc5b-bf07952f66b2) to become ready...
+==> openstack.ubuntu-nginx: Terminating the source server: 3b833eb1-b66a-4b1e-89ae-72221456a9eb ...
+Build 'openstack.ubuntu-nginx' finished after 1 minute 38 seconds.
+
+==> Wait completed after 1 minute 38 seconds
+
+==> Builds finished. The artifacts of successful builds are:
+--> openstack.ubuntu-nginx: An image was created: a31acc16-4703-468b-bc5b-bf07952f66b2
