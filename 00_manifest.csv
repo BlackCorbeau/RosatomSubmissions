@@ -120,4 +120,7 @@ VKC_LR_03_monitoring_tf_РемизовКЛ_20260618.log,EVIDENCE,LR_03,main,Ло
 VKC_LR_03_monitoring_main_РемизовКЛ_20260618.tf,CODE,LR_03,main,Основной файл конфигурации Terraform,03_code/VKC_LR_03_monitoring_main_РемизовКЛ_20260618.tf,,final,
 VKC_LR_03_monitoring_variables_РемизовКЛ_20260618.tf,CODE,LR_03,main,Переменные Terraform,03_code/VKC_LR_03_monitoring_variables_РемизовКЛ_20260618.tf,,final,
 VKC_LR_03_monitoring_outputs_РемизовКЛ_20260618.tf,CODE,LR_03,main,Выходные переменные Terraform,03_code/VKC_LR_03_monitoring_outputs_РемизовКЛ_20260618.tf,,final,
+VKC_PR_M07_01_cicd_REPORT_РемизовКЛ_20260618.md,PR,M07,01,CI/CD с использованием Terraform и GitHub Actions,01_reports/VKC_PR_M07_01_cicd_REPORT_РемизовКЛ_20260618.md,,final,
+VKC_PR_M07_01_cicd_workflow_РемизовКЛ_20260618.png,EVIDENCE,M07,01,Визуализация workflow GitHub Actions,02_evidence/VKC_PR_M07_01_cicd_workflow_РемизовКЛ_20260618.png,VKC_PR_M07_01_cicd_REPORT_РемизовКЛ_20260618.md,final,
+VKC_PR_M07_01_cicd_terraform_РемизовКЛ_20260618.yml,CODE,M07,01,Workflow GitHub Actions для Terraform,03_code/VKC_PR_M07_01_cicd_terraform_РемизовКЛ_20260618.yml,,final,
 00_manifest.csv,MANIFEST,all,all,Финальный манифест сдачи,00_manifest.csv,,final,
