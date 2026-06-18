@@ -1,0 +1,633 @@
+  ~/rosatom/lab3
+nix-shell ❯ terraform apply -auto-approve                                                                                                                     via 💠 default on ☁️  (ru-msk)
+There are some problems with the CLI configuration:
+╷
+│ Warning: Unable to open CLI configuration file
+│
+│ The CLI configuration file at
+│ "/home/kirill/rosatom/terraform-demo/terraform.rc" does not exist.
+╵
+
+data.vkcs_networking_network.extnet: Reading...
+data.vkcs_compute_flavor.bastion: Reading...
+data.vkcs_networking_router.router: Reading...
+data.vkcs_compute_flavor.web: Reading...
+data.vkcs_images_image.ubuntu: Reading...
+data.vkcs_networking_router.router: Read complete after 0s [id=913bdd47-9155-45b2-b404-5c10d0086132]
+data.vkcs_images_image.ubuntu: Read complete after 0s [id=371e0707-6700-48d1-97d8-e1a01a443fbf]
+data.vkcs_compute_flavor.bastion: Read complete after 0s [id=df3c499a-044f-41d2-8612-d303adc613cc]
+data.vkcs_compute_flavor.web: Read complete after 0s [id=df3c499a-044f-41d2-8612-d303adc613cc]
+data.vkcs_networking_network.extnet: Read complete after 0s [id=ec8c610e-6387-447e-83d2-d2c541e88164]
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # vkcs_compute_instance.bastion will be created
+  + resource "vkcs_compute_instance" "bastion" {
+      + access_ip_v4        = (known after apply)
+      + all_metadata        = (known after apply)
+      + all_tags            = (known after apply)
+      + availability_zone   = "MS1"
+      + flavor_id           = "df3c499a-044f-41d2-8612-d303adc613cc"
+      + flavor_name         = (known after apply)
+      + force_delete        = false
+      + id                  = (known after apply)
+      + image_id            = (known after apply)
+      + image_name          = (known after apply)
+      + key_pair            = "lab3-key"
+      + metadata            = {
+          + "created_by"  = "terraform"
+          + "environment" = "dev"
+          + "product"     = "Ubuntu 20.04"
+          + "sid"         = "ubuntu"
+        }
+      + name                = "lab3-bastion-monitoring"
+      + password_data       = (known after apply)
+      + power_state         = "active"
+      + region              = (known after apply)
+      + security_group_ids  = (known after apply)
+      + security_groups     = [
+          + "all",
+          + "lab3-secgroup",
+        ]
+      + stop_before_destroy = false
+      + user_data           = "8255f3f7092b87ca63eaa9c52f7321013e3b828d"
+
+      + block_device {
+          + boot_index            = 0
+          + delete_on_termination = true
+          + destination_type      = "volume"
+          + source_type           = "image"
+          + uuid                  = "371e0707-6700-48d1-97d8-e1a01a443fbf"
+          + volume_size           = 20
+          + volume_type           = "ceph-ssd"
+        }
+
+      + network {
+          + access_network = false
+          + fixed_ip_v4    = "192.168.1.10"
+          + mac            = (known after apply)
+          + name           = (known after apply)
+          + port           = (known after apply)
+          + uuid           = (known after apply)
+        }
+    }
+
+  # vkcs_compute_instance.web[0] will be created
+  + resource "vkcs_compute_instance" "web" {
+      + access_ip_v4        = (known after apply)
+      + all_metadata        = (known after apply)
+      + all_tags            = (known after apply)
+      + availability_zone   = "MS1"
+      + flavor_id           = "df3c499a-044f-41d2-8612-d303adc613cc"
+      + flavor_name         = (known after apply)
+      + force_delete        = false
+      + id                  = (known after apply)
+      + image_id            = (known after apply)
+      + image_name          = (known after apply)
+      + key_pair            = "lab3-key"
+      + metadata            = {
+          + "created_by"  = "terraform"
+          + "environment" = "dev"
+          + "product"     = "Ubuntu 20.04"
+          + "sid"         = "ubuntu"
+        }
+      + name                = "lab3-web-1"
+      + password_data       = (known after apply)
+      + power_state         = "active"
+      + region              = (known after apply)
+      + security_group_ids  = (known after apply)
+      + security_groups     = [
+          + "lab3-secgroup",
+          + "ssh",
+        ]
+      + stop_before_destroy = false
+      + user_data           = "8a5edf5029cc63b48b259828ca27260a26479651"
+
+      + block_device {
+          + boot_index            = 0
+          + delete_on_termination = true
+          + destination_type      = "volume"
+          + source_type           = "image"
+          + uuid                  = "371e0707-6700-48d1-97d8-e1a01a443fbf"
+          + volume_size           = 10
+          + volume_type           = "ceph-ssd"
+        }
+
+      + network {
+          + access_network = false
+          + fixed_ip_v4    = "192.168.2.10"
+          + mac            = (known after apply)
+          + name           = (known after apply)
+          + port           = (known after apply)
+          + uuid           = (known after apply)
+        }
+    }
+
+  # vkcs_compute_instance.web[1] will be created
+  + resource "vkcs_compute_instance" "web" {
+      + access_ip_v4        = (known after apply)
+      + all_metadata        = (known after apply)
+      + all_tags            = (known after apply)
+      + availability_zone   = "MS1"
+      + flavor_id           = "df3c499a-044f-41d2-8612-d303adc613cc"
+      + flavor_name         = (known after apply)
+      + force_delete        = false
+      + id                  = (known after apply)
+      + image_id            = (known after apply)
+      + image_name          = (known after apply)
+      + key_pair            = "lab3-key"
+      + metadata            = {
+          + "created_by"  = "terraform"
+          + "environment" = "dev"
+          + "product"     = "Ubuntu 20.04"
+          + "sid"         = "ubuntu"
+        }
+      + name                = "lab3-web-2"
+      + password_data       = (known after apply)
+      + power_state         = "active"
+      + region              = (known after apply)
+      + security_group_ids  = (known after apply)
+      + security_groups     = [
+          + "lab3-secgroup",
+          + "ssh",
+        ]
+      + stop_before_destroy = false
+      + user_data           = "8a5edf5029cc63b48b259828ca27260a26479651"
+
+      + block_device {
+          + boot_index            = 0
+          + delete_on_termination = true
+          + destination_type      = "volume"
+          + source_type           = "image"
+          + uuid                  = "371e0707-6700-48d1-97d8-e1a01a443fbf"
+          + volume_size           = 10
+          + volume_type           = "ceph-ssd"
+        }
+
+      + network {
+          + access_network = false
+          + fixed_ip_v4    = "192.168.2.11"
+          + mac            = (known after apply)
+          + name           = (known after apply)
+          + port           = (known after apply)
+          + uuid           = (known after apply)
+        }
+    }
+
+  # vkcs_compute_keypair.my_key will be created
+  + resource "vkcs_compute_keypair" "my_key" {
+      + fingerprint = (known after apply)
+      + id          = (known after apply)
+      + name        = "lab3-key"
+      + private_key = (sensitive value)
+      + public_key  = <<-EOT
+            ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCpR6b3KEkuT5Y/lWNXvD/MR0z10FKUJbSKgeVIsHxyrLm4gSk1WjobE4gH9OqXOn3r5JmTiGv0hWBACy2xBMZwnrsxgJtTSzPmYCJTln9zr/b7TFOijmB9qh/2pV5m+HPvKOZUiXCvfa9yOxmB0Thpud8ANzkgFgyT+MvaHQrEhDj6XJui3di7r+7DEHN7bCb9VWWFnAswbOxMWdtoxNMcVN1GYvtRqc/1qxSG0Qs4Ph748zhJFQAaFuu7MTZQsjhBIWF3dy5i0MIqsICTzSPayMEtrt+xCxYMEJSn1jUZrvQpkOe++jW181LVi56xnVazMe4VcRA1YYXo78OQQZGeHl3o9QjO2WhNwel1o+zU8DpD6gIay0heipQlcQZr92B7OI1XPpf8iXqqOYcC3U0e7ZqG9o0oJGO4vrp/wkL5bjMAvjnYtg7rta6fl/R0onrWVnIP3CzoaKBqjpdSnuR5s3kG+BSA2INJA6t+xdNN5cL0Gw6Xd5Hq8/XgaBSBJM0= kirill@WhiteRaven
+        EOT
+      + region      = (known after apply)
+    }
+
+  # vkcs_lb_listener.http will be created
+  + resource "vkcs_lb_listener" "http" {
+      + admin_state_up         = true
+      + allowed_cidrs          = (known after apply)
+      + connection_limit       = (known after apply)
+      + default_pool_id        = (known after apply)
+      + id                     = (known after apply)
+      + loadbalancer_id        = (known after apply)
+      + name                   = "lab3-listener"
+      + protocol               = "HTTP"
+      + protocol_port          = 80
+      + region                 = (known after apply)
+      + timeout_client_data    = (known after apply)
+      + timeout_member_connect = (known after apply)
+      + timeout_member_data    = (known after apply)
+      + timeout_tcp_inspect    = (known after apply)
+    }
+
+  # vkcs_lb_loadbalancer.main will be created
+  + resource "vkcs_lb_loadbalancer" "main" {
+      + admin_state_up     = true
+      + id                 = (known after apply)
+      + name               = "lab3-lb"
+      + region             = (known after apply)
+      + security_group_ids = (known after apply)
+      + vip_address        = (known after apply)
+      + vip_network_id     = (known after apply)
+      + vip_port_id        = (known after apply)
+      + vip_subnet_id      = (known after apply)
+    }
+
+  # vkcs_lb_member.web[0] will be created
+  + resource "vkcs_lb_member" "web" {
+      + address        = "192.168.2.10"
+      + admin_state_up = true
+      + id             = (known after apply)
+      + pool_id        = (known after apply)
+      + protocol_port  = 80
+      + region         = (known after apply)
+      + subnet_id      = (known after apply)
+      + weight         = (known after apply)
+    }
+
+  # vkcs_lb_member.web[1] will be created
+  + resource "vkcs_lb_member" "web" {
+      + address        = "192.168.2.11"
+      + admin_state_up = true
+      + id             = (known after apply)
+      + pool_id        = (known after apply)
+      + protocol_port  = 80
+      + region         = (known after apply)
+      + subnet_id      = (known after apply)
+      + weight         = (known after apply)
+    }
+
+  # vkcs_lb_monitor.web will be created
+  + resource "vkcs_lb_monitor" "web" {
+      + admin_state_up   = true
+      + delay            = 10
+      + expected_codes   = (known after apply)
+      + http_method      = (known after apply)
+      + id               = (known after apply)
+      + max_retries      = 3
+      + max_retries_down = (known after apply)
+      + pool_id          = (known after apply)
+      + region           = (known after apply)
+      + timeout          = 5
+      + type             = "HTTP"
+      + url_path         = "/"
+    }
+
+  # vkcs_lb_pool.web will be created
+  + resource "vkcs_lb_pool" "web" {
+      + admin_state_up = true
+      + id             = (known after apply)
+      + lb_method      = "ROUND_ROBIN"
+      + listener_id    = (known after apply)
+      + name           = "lab3-pool"
+      + protocol       = "HTTP"
+      + region         = (known after apply)
+
+      + persistence (known after apply)
+    }
+
+  # vkcs_networking_floatingip.bastion will be created
+  + resource "vkcs_networking_floatingip" "bastion" {
+      + address   = (known after apply)
+      + fixed_ip  = (known after apply)
+      + id        = (known after apply)
+      + pool      = "internet"
+      + port_id   = (known after apply)
+      + region    = (known after apply)
+      + sdn       = (known after apply)
+      + subnet_id = (known after apply)
+    }
+
+  # vkcs_networking_floatingip.lb will be created
+  + resource "vkcs_networking_floatingip" "lb" {
+      + address   = (known after apply)
+      + fixed_ip  = (known after apply)
+      + id        = (known after apply)
+      + pool      = "internet"
+      + port_id   = (known after apply)
+      + region    = (known after apply)
+      + sdn       = (known after apply)
+      + subnet_id = (known after apply)
+    }
+
+  # vkcs_networking_floatingip_associate.bastion will be created
+  + resource "vkcs_networking_floatingip_associate" "bastion" {
+      + fixed_ip    = (known after apply)
+      + floating_ip = (known after apply)
+      + id          = (known after apply)
+      + port_id     = (known after apply)
+      + region      = (known after apply)
+      + sdn         = (known after apply)
+    }
+
+  # vkcs_networking_floatingip_associate.lb will be created
+  + resource "vkcs_networking_floatingip_associate" "lb" {
+      + fixed_ip    = (known after apply)
+      + floating_ip = (known after apply)
+      + id          = (known after apply)
+      + port_id     = (known after apply)
+      + region      = (known after apply)
+      + sdn         = (known after apply)
+    }
+
+  # vkcs_networking_network.main will be created
+  + resource "vkcs_networking_network" "main" {
+      + admin_state_up        = true
+      + all_tags              = (known after apply)
+      + id                    = (known after apply)
+      + name                  = "lab3-network"
+      + port_security_enabled = true
+      + private_dns_domain    = (known after apply)
+      + region                = (known after apply)
+      + sdn                   = "sprut"
+    }
+
+  # vkcs_networking_router_interface.private will be created
+  + resource "vkcs_networking_router_interface" "private" {
+      + id        = (known after apply)
+      + port_id   = (known after apply)
+      + region    = (known after apply)
+      + router_id = "913bdd47-9155-45b2-b404-5c10d0086132"
+      + sdn       = (known after apply)
+      + subnet_id = (known after apply)
+    }
+
+  # vkcs_networking_router_interface.public will be created
+  + resource "vkcs_networking_router_interface" "public" {
+      + id        = (known after apply)
+      + port_id   = (known after apply)
+      + region    = (known after apply)
+      + router_id = "913bdd47-9155-45b2-b404-5c10d0086132"
+      + sdn       = (known after apply)
+      + subnet_id = (known after apply)
+    }
+
+  # vkcs_networking_secgroup.main will be created
+  + resource "vkcs_networking_secgroup" "main" {
+      + all_tags    = (known after apply)
+      + description = "Security group for monitoring lab"
+      + id          = (known after apply)
+      + name        = "lab3-secgroup"
+      + region      = (known after apply)
+      + sdn         = (known after apply)
+    }
+
+  # vkcs_networking_secgroup_rule.egress will be created
+  + resource "vkcs_networking_secgroup_rule" "egress" {
+      + direction         = "egress"
+      + ethertype         = "IPv4"
+      + id                = (known after apply)
+      + port_range_max    = (known after apply)
+      + port_range_min    = (known after apply)
+      + protocol          = (known after apply)
+      + region            = (known after apply)
+      + remote_group_id   = (known after apply)
+      + remote_ip_prefix  = "0.0.0.0/0"
+      + sdn               = (known after apply)
+      + security_group_id = (known after apply)
+    }
+
+  # vkcs_networking_secgroup_rule.grafana will be created
+  + resource "vkcs_networking_secgroup_rule" "grafana" {
+      + direction         = "ingress"
+      + ethertype         = "IPv4"
+      + id                = (known after apply)
+      + port_range_max    = 3000
+      + port_range_min    = 3000
+      + protocol          = "tcp"
+      + region            = (known after apply)
+      + remote_group_id   = (known after apply)
+      + remote_ip_prefix  = "0.0.0.0/0"
+      + sdn               = (known after apply)
+      + security_group_id = (known after apply)
+    }
+
+  # vkcs_networking_secgroup_rule.http will be created
+  + resource "vkcs_networking_secgroup_rule" "http" {
+      + direction         = "ingress"
+      + ethertype         = "IPv4"
+      + id                = (known after apply)
+      + port_range_max    = 80
+      + port_range_min    = 80
+      + protocol          = "tcp"
+      + region            = (known after apply)
+      + remote_group_id   = (known after apply)
+      + remote_ip_prefix  = "0.0.0.0/0"
+      + sdn               = (known after apply)
+      + security_group_id = (known after apply)
+    }
+
+  # vkcs_networking_secgroup_rule.node_exporter_private will be created
+  + resource "vkcs_networking_secgroup_rule" "node_exporter_private" {
+      + direction         = "ingress"
+      + ethertype         = "IPv4"
+      + id                = (known after apply)
+      + port_range_max    = 9100
+      + port_range_min    = 9100
+      + protocol          = "tcp"
+      + region            = (known after apply)
+      + remote_group_id   = (known after apply)
+      + remote_ip_prefix  = "192.168.2.0/24"
+      + sdn               = (known after apply)
+      + security_group_id = (known after apply)
+    }
+
+  # vkcs_networking_secgroup_rule.node_exporter_public will be created
+  + resource "vkcs_networking_secgroup_rule" "node_exporter_public" {
+      + direction         = "ingress"
+      + ethertype         = "IPv4"
+      + id                = (known after apply)
+      + port_range_max    = 9100
+      + port_range_min    = 9100
+      + protocol          = "tcp"
+      + region            = (known after apply)
+      + remote_group_id   = (known after apply)
+      + remote_ip_prefix  = "192.168.1.0/24"
+      + sdn               = (known after apply)
+      + security_group_id = (known after apply)
+    }
+
+  # vkcs_networking_secgroup_rule.prometheus will be created
+  + resource "vkcs_networking_secgroup_rule" "prometheus" {
+      + direction         = "ingress"
+      + ethertype         = "IPv4"
+      + id                = (known after apply)
+      + port_range_max    = 9090
+      + port_range_min    = 9090
+      + protocol          = "tcp"
+      + region            = (known after apply)
+      + remote_group_id   = (known after apply)
+      + remote_ip_prefix  = "0.0.0.0/0"
+      + sdn               = (known after apply)
+      + security_group_id = (known after apply)
+    }
+
+  # vkcs_networking_secgroup_rule.ssh will be created
+  + resource "vkcs_networking_secgroup_rule" "ssh" {
+      + direction         = "ingress"
+      + ethertype         = "IPv4"
+      + id                = (known after apply)
+      + port_range_max    = 22
+      + port_range_min    = 22
+      + protocol          = "tcp"
+      + region            = (known after apply)
+      + remote_group_id   = (known after apply)
+      + remote_ip_prefix  = (sensitive value)
+      + sdn               = (known after apply)
+      + security_group_id = (known after apply)
+    }
+
+  # vkcs_networking_subnet.private will be created
+  + resource "vkcs_networking_subnet" "private" {
+      + all_tags           = (known after apply)
+      + cidr               = "192.168.2.0/24"
+      + dns_nameservers    = [
+          + "8.8.8.8",
+          + "1.1.1.1",
+        ]
+      + enable_dhcp        = true
+      + enable_private_dns = (known after apply)
+      + gateway_ip         = (known after apply)
+      + id                 = (known after apply)
+      + name               = "lab3-private-subnet"
+      + network_id         = (known after apply)
+      + no_gateway         = false
+      + region             = (known after apply)
+      + sdn                = (known after apply)
+
+      + allocation_pool (known after apply)
+    }
+
+  # vkcs_networking_subnet.public will be created
+  + resource "vkcs_networking_subnet" "public" {
+      + all_tags           = (known after apply)
+      + cidr               = "192.168.1.0/24"
+      + dns_nameservers    = [
+          + "8.8.8.8",
+          + "1.1.1.1",
+        ]
+      + enable_dhcp        = true
+      + enable_private_dns = (known after apply)
+      + gateway_ip         = (known after apply)
+      + id                 = (known after apply)
+      + name               = "lab3-public-subnet"
+      + network_id         = (known after apply)
+      + no_gateway         = false
+      + region             = (known after apply)
+      + sdn                = (known after apply)
+
+      + allocation_pool (known after apply)
+    }
+
+Plan: 27 to add, 0 to change, 0 to destroy.
+
+Changes to Outputs:
+  + bastion_floating_ip = (known after apply)
+  + grafana_url         = (known after apply)
+  + load_balancer_ip    = (known after apply)
+  + prometheus_url      = (known after apply)
+  + ssh_to_bastion      = (known after apply)
+  + web_private_ips     = [
+      + "192.168.2.10",
+      + "192.168.2.11",
+    ]
+vkcs_networking_floatingip.lb: Creating...
+vkcs_networking_secgroup.main: Creating...
+vkcs_networking_floatingip.bastion: Creating...
+vkcs_compute_keypair.my_key: Creating...
+vkcs_networking_network.main: Creating...
+vkcs_compute_keypair.my_key: Creation complete after 1s [id=lab3-key]
+vkcs_networking_secgroup.main: Creation complete after 1s [id=b08f9c6d-cb74-40a3-96f9-d9495efb0c32]
+vkcs_networking_secgroup_rule.egress: Creating...
+vkcs_networking_secgroup_rule.node_exporter_private: Creating...
+vkcs_networking_secgroup_rule.http: Creating...
+vkcs_networking_secgroup_rule.node_exporter_public: Creating...
+vkcs_networking_secgroup_rule.ssh: Creating...
+vkcs_networking_secgroup_rule.prometheus: Creating...
+vkcs_networking_secgroup_rule.grafana: Creating...
+vkcs_networking_secgroup_rule.egress: Creation complete after 0s [id=5fe8657e-0d40-4d51-906a-a2909ac02600]
+vkcs_networking_secgroup_rule.node_exporter_private: Creation complete after 1s [id=3bc123fa-7460-4d76-8aee-c8a15f97b747]
+vkcs_networking_secgroup_rule.node_exporter_public: Creation complete after 1s [id=13b4e677-fd26-4b65-8030-ce0848a37e0d]
+vkcs_networking_secgroup_rule.http: Creation complete after 2s [id=69b21b5c-19c1-496c-a835-8e2f38a2a984]
+vkcs_networking_secgroup_rule.prometheus: Creation complete after 3s [id=cc43e762-8174-44eb-ba4c-294123fa7339]
+vkcs_networking_secgroup_rule.ssh: Creation complete after 3s [id=f4f74676-afbb-4f30-ab30-95b28ca99eb0]
+vkcs_networking_secgroup_rule.grafana: Creation complete after 4s [id=1e01ebab-58b9-4d7b-bdf0-7dc740e39a47]
+vkcs_networking_network.main: Creation complete after 7s [id=10ee5854-c2b1-42c2-ab74-c3dea98eaf3a]
+vkcs_networking_subnet.private: Creating...
+vkcs_networking_subnet.public: Creating...
+vkcs_compute_instance.web[0]: Creating...
+vkcs_compute_instance.web[1]: Creating...
+vkcs_networking_floatingip.bastion: Creation complete after 8s [id=fa7999fe-a9d9-4035-854e-8fc35491c9b2]
+vkcs_networking_floatingip.lb: Creation complete after 9s [id=4bef518b-0ab4-410c-a8a1-e2d62beb65d4]
+vkcs_networking_subnet.private: Creation complete after 7s [id=3b3b8148-a304-46ca-a794-338bfdbddd17]
+vkcs_networking_subnet.public: Creation complete after 7s [id=23c4ad49-e668-4596-9059-3175fb2cf48d]
+vkcs_networking_router_interface.public: Creating...
+vkcs_networking_router_interface.private: Creating...
+vkcs_lb_loadbalancer.main: Creating...
+vkcs_compute_instance.web[0]: Still creating... [00m10s elapsed]
+vkcs_compute_instance.web[1]: Still creating... [00m10s elapsed]
+vkcs_networking_router_interface.public: Creation complete after 6s [id=06261151-4812-4156-afc5-99e2dbed5fed]
+vkcs_networking_router_interface.private: Creation complete after 9s [id=cb5f4cf9-87d0-46d9-afe8-f59df9bf5a2f]
+vkcs_lb_loadbalancer.main: Still creating... [00m10s elapsed]
+vkcs_compute_instance.web[0]: Still creating... [00m20s elapsed]
+vkcs_compute_instance.web[1]: Still creating... [00m20s elapsed]
+vkcs_lb_loadbalancer.main: Still creating... [00m20s elapsed]
+vkcs_compute_instance.web[1]: Still creating... [00m30s elapsed]
+vkcs_compute_instance.web[0]: Still creating... [00m30s elapsed]
+vkcs_lb_loadbalancer.main: Still creating... [00m30s elapsed]
+vkcs_compute_instance.web[0]: Still creating... [00m40s elapsed]
+vkcs_compute_instance.web[1]: Still creating... [00m40s elapsed]
+vkcs_lb_loadbalancer.main: Still creating... [00m40s elapsed]
+vkcs_compute_instance.web[1]: Creation complete after 48s [id=7e85fd67-cada-4c87-a04c-0a2eab2e0182]
+vkcs_compute_instance.web[0]: Creation complete after 48s [id=a8c92f02-ecaa-47d9-96c0-9baceaccc474]
+vkcs_compute_instance.bastion: Creating...
+vkcs_lb_loadbalancer.main: Still creating... [00m50s elapsed]
+vkcs_compute_instance.bastion: Still creating... [00m10s elapsed]
+vkcs_lb_loadbalancer.main: Still creating... [01m00s elapsed]
+vkcs_compute_instance.bastion: Still creating... [00m20s elapsed]
+vkcs_lb_loadbalancer.main: Still creating... [01m10s elapsed]
+vkcs_compute_instance.bastion: Still creating... [00m30s elapsed]
+vkcs_lb_loadbalancer.main: Still creating... [01m20s elapsed]
+vkcs_compute_instance.bastion: Still creating... [00m40s elapsed]
+vkcs_compute_instance.bastion: Creation complete after 46s [id=26161275-fc57-459e-b91d-94cac4a927a4]
+vkcs_networking_floatingip_associate.bastion: Creating...
+vkcs_networking_floatingip_associate.bastion: Creation complete after 1s [id=fa7999fe-a9d9-4035-854e-8fc35491c9b2]
+vkcs_lb_loadbalancer.main: Still creating... [01m30s elapsed]
+vkcs_lb_loadbalancer.main: Still creating... [01m40s elapsed]
+vkcs_lb_loadbalancer.main: Still creating... [01m50s elapsed]
+vkcs_lb_loadbalancer.main: Still creating... [02m00s elapsed]
+vkcs_lb_loadbalancer.main: Still creating... [02m10s elapsed]
+vkcs_lb_loadbalancer.main: Still creating... [02m20s elapsed]
+vkcs_lb_loadbalancer.main: Still creating... [02m30s elapsed]
+vkcs_lb_loadbalancer.main: Creation complete after 2m34s [id=12d3ddc4-e58d-48a0-87bf-b4a1c7b162eb]
+vkcs_networking_floatingip_associate.lb: Creating...
+vkcs_lb_listener.http: Creating...
+vkcs_networking_floatingip_associate.lb: Creation complete after 1s [id=4bef518b-0ab4-410c-a8a1-e2d62beb65d4]
+vkcs_lb_listener.http: Still creating... [00m10s elapsed]
+vkcs_lb_listener.http: Creation complete after 18s [id=3b6c6cd2-aa9c-4d5e-a183-932c036df7c9]
+vkcs_lb_pool.web: Creating...
+vkcs_lb_pool.web: Still creating... [00m10s elapsed]
+vkcs_lb_pool.web: Still creating... [00m20s elapsed]
+vkcs_lb_pool.web: Still creating... [00m30s elapsed]
+vkcs_lb_pool.web: Creation complete after 30s [id=144fc519-3e95-4864-a27b-70d6a625b1dd]
+vkcs_lb_member.web[0]: Creating...
+vkcs_lb_member.web[1]: Creating...
+vkcs_lb_monitor.web: Creating...
+vkcs_lb_member.web[1]: Still creating... [00m10s elapsed]
+vkcs_lb_member.web[0]: Still creating... [00m10s elapsed]
+vkcs_lb_monitor.web: Still creating... [00m10s elapsed]
+vkcs_lb_member.web[1]: Creation complete after 11s [id=2ec0fdc9-b5d1-4e90-89b4-8a226e9b80d4]
+vkcs_lb_monitor.web: Creation complete after 11s [id=86ca425f-ce18-4401-84d5-1b425eaa8a09]
+vkcs_lb_member.web[0]: Creation complete after 20s [id=44125250-7888-4aa0-9204-9b26374a0e14]
+╷
+│ Warning: Argument is deprecated
+│
+│   with vkcs_compute_instance.web[0],
+│   on VKC_LR_03_monitoring_main_РемизовКЛ_20260618.tf line 155, in resource "vkcs_compute_instance" "web":
+│  155:   security_groups    = ["ssh", vkcs_networking_secgroup.main.name]
+│
+│ Configure `security_group_ids` instead.
+│
+│ (and 5 more similar warnings elsewhere)
+╵
+
+Apply complete! Resources: 27 added, 0 changed, 0 destroyed.
+
+Outputs:
+
+bastion_floating_ip = "95.163.215.149"
+grafana_url = "http://95.163.215.149:3000"
+load_balancer_ip = "95.163.214.163"
+prometheus_url = "http://95.163.215.149:9090"
+ssh_to_bastion = "ssh -i ~/.ssh/id_rsa ubuntu@95.163.215.149"
+web_private_ips = [
+  "192.168.2.10",
+  "192.168.2.11",
+]
