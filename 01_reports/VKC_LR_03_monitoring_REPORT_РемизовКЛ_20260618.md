@@ -22,7 +22,6 @@ attached_files:
 estimated_cost_rub: 36
 status: final
 ---
-
 # Отчет по лабораторной работе №3: Мониторинг и логирование
 
 ## 1. Цель работы

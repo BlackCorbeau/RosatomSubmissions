@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config
+  namespace: web-app
+data:
+  LB_IP: "95.163.215.1"
