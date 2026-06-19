@@ -140,4 +140,6 @@ VKC_LR_04_cicd_gitops_k8s_РемизовКЛ_20260619.png,EVIDENCE,LR_04,main,К
 VKC_LR_04_cicd_gitops_s3_РемизовКЛ_20260619.png,EVIDENCE,LR_04,main,Бакет S3 с state-файлом,02_evidence/VKC_LR_04_cicd_gitops_s3_РемизовКЛ_20260619.png,VKC_LR_04_cicd_gitops_REPORT_РемизовКЛ_20260619.md,final,
 VKC_LR_04_cicd_gitops_app-config_РемизовКЛ_20260619.png,EVIDENCE,LR_04,main,ConfigMap приложения,02_evidence/VKC_LR_04_cicd_gitops_app-config_РемизовКЛ_20260619.png,VKC_LR_04_cicd_gitops_REPORT_РемизовКЛ_20260619.md,final,
 VKC_LR_04_cicd_gitops_log_РемизовКЛ_20260619.log,EVIDENCE,LR_04,main,Лог выполнения команд (установка ArgoCD),02_evidence/VKC_LR_04_cicd_gitops_log_РемизовКЛ_20260619.log,VKC_LR_04_cicd_gitops_REPORT_РемизовКЛ_20260619.md,final,
+VKC_CASE_03_migration_РемизовКЛ_20260619.md,CASE,M08,CASE_03,Анализ и выбор стратегии миграции LAMP-приложения,01_reports/VKC_CASE_03_migration_РемизовКЛ_20260619.md,,final,
+VKC_CASE_03_migration_IvanovII_20260619.drawio.png,DIAGRAM,M08,CASE_03,Схема целевой архитектуры интернет-магазина в VK Cloud,04_diagrams/VKC_CASE_03_migration_IvanovII_20260619.drawio.png,,final,
 00_manifest.csv,MANIFEST,all,all,Финальный манифест сдачи,00_manifest.csv,,final,
