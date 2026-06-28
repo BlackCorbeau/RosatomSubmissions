@@ -1,0 +1,56 @@
+  ~/rosatom/final_asessment_terraform
+nix-shell ❯ ab -n 1000 -c 10 http://95.163.213.173/DevOps                                                                                                     via 💠 default on ☁️  (ru-msk)
+This is ApacheBench, Version 2.3 <$Revision: 1923142 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking 95.163.213.173 (be patient)
+Completed 100 requests
+Completed 200 requests
+Completed 300 requests
+Completed 400 requests
+Completed 500 requests
+Completed 600 requests
+Completed 700 requests
+Completed 800 requests
+Completed 900 requests
+Completed 1000 requests
+Finished 1000 requests
+
+
+Server Software:        gunicorn
+Server Hostname:        95.163.213.173
+Server Port:            80
+
+Document Path:          /DevOps
+Document Length:        10796 bytes
+
+Concurrency Level:      10
+Time taken for tests:   13.065 seconds
+Complete requests:      1000
+Failed requests:        1
+   (Connect: 0, Receive: 0, Length: 1, Exceptions: 0)
+Total transferred:      10922067 bytes
+HTML transferred:       10785204 bytes
+Requests per second:    76.54 [#/sec] (mean)
+Time per request:       130.653 [ms] (mean)
+Time per request:       13.065 [ms] (mean, across all concurrent requests)
+Transfer rate:          816.36 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.1      0       1
+Processing:    25  114 334.8     62    5001
+Waiting:        0  105 296.8     57    4156
+Total:         25  114 334.8     62    5001
+
+Percentage of the requests served within a certain time (ms)
+  50%     62
+  66%     73
+  75%     79
+  80%     83
+  90%     95
+  95%    113
+  98%   1114
+  99%   2100
+ 100%   5001 (longest request)

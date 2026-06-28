@@ -1,0 +1,266 @@
+  ~/r/final_assessment/terraform on main [?ok]
+nix-shell ❯ curl -v http://95.163.213.173/DevOps                                                                                                              via 💠 default on ☁️  (ru-msk)
+*   Trying 95.163.213.173:80...
+* Established connection to 95.163.213.173 (95.163.213.173 port 80) from 198.18.0.1 port 57226
+* using HTTP/1.x
+> GET /DevOps HTTP/1.1
+> Host: 95.163.213.173
+> User-Agent: curl/8.20.0
+> Accept: */*
+>
+* Request completely sent off
+< HTTP/1.1 200 OK
+< server: gunicorn
+< date: Sun, 28 Jun 2026 10:29:17 GMT
+< content-type: text/html; charset=utf-8
+< content-length: 10796
+<
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кирилл Ремизов</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <!-- Шапка с фото и контактами -->
+    <div class="header">
+        <div class="photo-section">
+            <div class="photo-slider" id="photoSlider">
+                <!-- Фотографии будут добавлены через JavaScript -->
+            </div>
+            <div class="slider-controls" id="sliderControls">
+                <!-- Точки управления слайдером будут добавлены через JavaScript -->
+            </div>
+        </div>
+
+        <div class="info-section">
+            <h1>Ремизов Кирилл Львович</h1>
+            <div class="subtitle">Интересующее направление: SRE/DevOps инженер</div>
+
+            <p>Студент 3 курса ННГУ им. Лобачевского по направлению "Программная инженерия" (Средний бал: 3,85). Стремлюсь к профессиональному росту: изучаю новые технологии, алгоритмы и подходы к разработке. Как молодой специалист, подхожу к работе с энтузиазмом и готов вкладываться в сложные проекты.</p>
+
+            <div class="contacts">
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <div>
+                        <div><a href="tel:+79051932953">+7 (905) 193-29-53</a></div>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div>
+                        <div><a href="mailto:remizov.kirill2005@yandex.ru">remizov.kirill2005@yandex.ru</a></div>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fab fa-telegram"></i>
+                    </div>
+                    <div>
+                        <div><a href="https://t.me/simpleRussianProger" target="_blank">@simpleRussianProger</a></div>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fab fa-github"></i>
+                    </div>
+                    <div>
+                        <div><a href="https://github.com/BlackCorbeau" target="_blank">BlackCorbeau (GitHub)</a></div>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fab fa-git-alt"></i>
+                    </div>
+                    <div>
+                        <div><a href="https://git.rustprogersteam.ru/Black_Raven" target="_blank">RemizovKL (Forgejo)</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Левая колонка -->
+        <div class="left-column">
+            <!-- Образование -->
+            <div class="card">
+                <div class="card-title">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>Образование</span>
+                </div>
+                <p><strong>2023–2027 ННГУ им. Лобачевского</strong>, Нижний Новгород</p>
+                <p style="color: var(--text-muted); margin-top: 5px;">Программная инженерия</p>
+            </div>
+
+            <!-- Достижения -->
+            <div class="card">
+                <div class="card-title">
+                    <i class="fas fa-trophy"></i>
+                    <span>Достижения</span>
+                </div>
+                <p><strong>2025</strong> Участие в хакатоне от IT-холдинга Т1, 3-е место.</p>
+            </div>
+
+            <!-- Языки -->
+            <div class="card">
+                <div class="card-title">
+                    <i class="fas fa-globe"></i>
+                    <span>Языки</span>
+                </div>
+                <ul class="list">
+                    <li>Английский (B2)</li>
+                    <li>Французский (разговорный)</li>
+                </ul>
+            </div>
+
+            <!-- Soft Skills -->
+            <div class="card">
+                <div class="card-title">
+                    <i class="fas fa-users"></i>
+                    <span>Soft Skills</span>
+                </div>
+                <ul class="list">
+                    <li>Ответственный и пунктуальный</li>
+                    <li>Любовь к своему делу</li>
+                    <li>Умение работать в команде</li>
+                    <li>Открыт к обмену опытом</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Правая колонка -->
+        <div class="right-column">
+            <!-- Технические навыки -->
+            <div class="card">
+                <div class="card-title">
+                    <i class="fas fa-cogs"></i>
+                    <span>Технические навыки</span>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <span>C++</span>
+                        <span>5/5</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-level" style="width: 100%;"></div>
+                    </div>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <span>Rust</span>
+                        <span>4/5</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-level" style="width: 80%;"></div>
+                    </div>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <span>SQL</span>
+                        <span>3/5</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-level" style="width: 60%;"></div>
+                    </div>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <span>Python</span>
+                        <span>2/5</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-level" style="width: 40%;"></div>
+                    </div>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <span>CI/CD</span>
+                        <span>5/5</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-level" style="width: 100%;"></div>
+                    </div>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <span>Linux</span>
+                        <span>5/5</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-level" style="width: 100%;"></div>
+                    </div>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <span>Docker</span>
+                        <span>5/5</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-level" style="width: 100%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Профессиональные навыки -->
+            <div class="card">
+                <div class="card-title">
+                    <i class="fas fa-tools"></i>
+                    <span>Профессиональные навыки</span>
+                </div>
+                <div class="two-column-list">
+                    <ul class="list">
+                        <li>Работа с терминалом</li>
+                        <li>Vim</li>
+                        <li>Docker</li>
+                    </ul>
+                    <ul class="list">
+                        <li>Kubernetes</li>
+                        <li>*nix системы</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Ссылка на репозиторий -->
+            <div class="card">
+                <div class="card-title">
+                    <i class="fas fa-code-branch"></i>
+                    <span>Репозиторий проекта</span>
+                </div>
+                <p>Исходный код этого резюме доступны в репозитории:</p>
+                <a href="https://git.rustprogersteam.ru/Black_Raven/MyResume" target="_blank" class="repo-link">
+                    <i class="fab fa-git-alt"></i>
+                    <span>https://git.rustprogersteam.ru/Black_Raven/MyResume</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p><i class="fas fa-heart" style="color: var(--primary);"></i> Обновлено: <span id="currentDate"></span></p>
+        <p style="margin-top: 10px; font-size: 0.8rem;">Стиль вдохновлен Forgejo | Черно-оранжевая цветовая схема</p>
+    </div>
+
+    <script src="/static/js/script.js"></script>
+</body>
+* Connection #0 to host 95.163.213.173:80 left intact
+</html>%

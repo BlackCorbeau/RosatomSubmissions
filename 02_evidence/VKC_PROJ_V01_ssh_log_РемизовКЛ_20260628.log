@@ -1,0 +1,138 @@
+  ~/r/final_assessment/terraform on main [ok]
+nix-shell ❯ scp -i ~/.ssh/id_rsa ~/.ssh/id_rsa ubuntu@95.163.215.1:/home/ubuntu/.ssh/id_rsa                                                                   via 💠 default on ☁️  (ru-msk)
+The authenticity of host '95.163.215.1 (95.163.215.1)' can't be established.
+ED25519 key fingerprint is: SHA256:IhiPDFfSS5rEQ83Sws/pkRp91/BsVD+kiZJwhG6G/H8
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '95.163.215.1' (ED25519) to the list of known hosts.
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+id_rsa                                                                                                                                                     100% 2602   192.9KB/s   00:00
+
+  ~/r/final_assessment/terraform on main [ok]
+nix-shell ❯ ssh -A -i ~/.ssh/id_rsa ubuntu@95.163.215.1                                                                                                       via 💠 default on ☁️  (ru-msk)
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+Welcome to Ubuntu 20.04.6 LTS (GNU/Linux 5.4.0-216-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+
+ System information as of Sun Jun 28 10:23:32 UTC 2026
+
+  System load:  0.0               Processes:             101
+  Usage of /:   9.0% of 19.20GB   Users logged in:       0
+  Memory usage: 20%               IPv4 address for ens3: 192.168.1.10
+  Swap usage:   0%
+
+
+Expanded Security Maintenance for Infrastructure is not enabled.
+
+0 updates can be applied immediately.
+
+128 additional security updates can be applied with ESM Infra.
+Learn more about enabling ESM Infra service for Ubuntu 20.04 at
+https://ubuntu.com/20-04
+
+New release '22.04.5 LTS' available.
+Run 'do-release-upgrade' to upgrade to it.
+
+
+Last login: Sun Jun 28 10:11:57 2026 from 95.26.148.233
+ubuntu@final-assessment-bastion:~$ ssh ubuntu@192.168.2.10   # теперь должно работать
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
+Someone could be eavesdropping on you right now (man-in-the-middle attack)!
+It is also possible that a host key has just been changed.
+The fingerprint for the ECDSA key sent by the remote host is
+SHA256:zXGSX2Tz1E2gWu5hYFEpl0465z0zTQAR4+3hjRQOQnc.
+Please contact your system administrator.
+Add correct host key in /home/ubuntu/.ssh/known_hosts to get rid of this message.
+Offending ECDSA key in /home/ubuntu/.ssh/known_hosts:1
+  remove with:
+  ssh-keygen -f "/home/ubuntu/.ssh/known_hosts" -R "192.168.2.10"
+ECDSA host key for 192.168.2.10 has changed and you have requested strict checking.
+Host key verification failed.
+ubuntu@final-assessment-bastion:~$ rm ~/.ssh/
+authorized_keys  id_rsa           known_hosts
+ubuntu@final-assessment-bastion:~$ rm ~/.ssh/
+authorized_keys  id_rsa           known_hosts
+ubuntu@final-assessment-bastion:~$ rm ~/.ssh/known_hosts
+ubuntu@final-assessment-bastion:~$ ssh ubuntu@192.168.2.10   # теперь должно работать
+The authenticity of host '192.168.2.10 (192.168.2.10)' can't be established.
+ECDSA key fingerprint is SHA256:zXGSX2Tz1E2gWu5hYFEpl0465z0zTQAR4+3hjRQOQnc.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? ye
+Please type 'yes', 'no' or the fingerprint: yes
+Warning: Permanently added '192.168.2.10' (ECDSA) to the list of known hosts.
+Welcome to Ubuntu 20.04.6 LTS (GNU/Linux 5.4.0-216-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+
+ System information as of Sun Jun 28 10:24:27 UTC 2026
+
+  System load:  0.48              Processes:             115
+  Usage of /:   22.8% of 9.51GB   Users logged in:       0
+  Memory usage: 33%               IPv4 address for ens3: 192.168.2.10
+  Swap usage:   0%
+
+
+Expanded Security Maintenance for Infrastructure is not enabled.
+
+1 update can be applied immediately.
+1 of these updates is a standard security update.
+To see these additional updates run: apt list --upgradable
+
+129 additional security updates can be applied with ESM Infra.
+Learn more about enabling ESM Infra service for Ubuntu 20.04 at
+https://ubuntu.com/20-04
+
+
+ubuntu@final-assessment-web-1:~$ sudo docker ps
+CONTAINER ID   IMAGE                                                       COMMAND                  CREATED              STATUS              PORTS                               NAMES
+365edf425ac4   git.rustprogersteam.ru/black_raven/myresume/resume:latest   "gunicorn app:app -b…"   About a minute ago   Up About a minute   0.0.0.0:80->80/tcp, :::80->80/tcp   upbeat_northcutt
+ubuntu@final-assessment-web-1:~$ exit
+logout
+Connection to 192.168.2.10 closed.
+ubuntu@final-assessment-bastion:~$ ssh ubuntu@192.168.2.11   # теперь должно работать
+The authenticity of host '192.168.2.11 (192.168.2.11)' can't be established.
+ECDSA key fingerprint is SHA256:NZ7FTKC5HtwQkpRs/4J4IPKzaQB5vEX0TRKZ5+t0hMI.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '192.168.2.11' (ECDSA) to the list of known hosts.
+Welcome to Ubuntu 20.04.6 LTS (GNU/Linux 5.4.0-216-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+
+ System information as of Sun Jun 28 10:25:13 UTC 2026
+
+  System load:  0.18              Processes:             117
+  Usage of /:   22.8% of 9.51GB   Users logged in:       0
+  Memory usage: 31%               IPv4 address for ens3: 192.168.2.11
+  Swap usage:   0%
+
+
+Expanded Security Maintenance for Infrastructure is not enabled.
+
+1 update can be applied immediately.
+1 of these updates is a standard security update.
+To see these additional updates run: apt list --upgradable
+
+129 additional security updates can be applied with ESM Infra.
+Learn more about enabling ESM Infra service for Ubuntu 20.04 at
+https://ubuntu.com/20-04
+
+
+ubuntu@final-assessment-web-2:~$ sudo docker ps
+CONTAINER ID   IMAGE                                                       COMMAND                  CREATED         STATUS         PORTS                               NAMES
+540a7f938ba0   git.rustprogersteam.ru/black_raven/myresume/resume:latest   "gunicorn app:app -b…"   2 minutes ago   Up 2 minutes   0.0.0.0:80->80/tcp, :::80->80/tcp   lucid_cerf
+ubuntu@final-assessment-web-2:~$ exit
+logout
+Connection to 192.168.2.11 closed.
